@@ -1,0 +1,20 @@
+thread_queue_size 1000
+no_of_cores 10 
+no_of_clients 2000
+timeout_min 5
+timeout_lambda 0.6
+context_switch 1
+size_of_threadpool 1000
+thinktime_constant -1
+thinktime_a 3
+thinktime_b 11
+quantum_size 1
+######## service_time_option 1 for uniform----, 2 for exponential------, 3 for constant ###
+servicetime_option 1 
+
+a 0.1 #lower limit
+b 2.0 #for upper limit
+servicetime_lambda 0.5
+simulation_time_per 100
+seed 20
+
