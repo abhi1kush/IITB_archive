@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section.0.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.0.2}{Virtualization Technologies}{}% 2
+\BOOKMARK [2][-]{subsection.0.2.1}{Virtualization}{section.0.2}% 3
+\BOOKMARK [2][-]{subsection.0.2.2}{Xen}{section.0.2}% 4
+\BOOKMARK [2][-]{subsection.0.2.3}{kvm}{section.0.2}% 5
+\BOOKMARK [1][-]{section.0.3}{Comparison among Xen, KVM and other Virtualization technologies}{}% 6
+\BOOKMARK [2][-]{subsection.0.3.1}{Description of experiment done to find performance related data.}{section.0.3}% 7
+\BOOKMARK [2][-]{subsection.0.3.2}{Performance analysis}{section.0.3}% 8
+\BOOKMARK [1][-]{section.0.4}{Power Management in Virtualized Platforms}{}% 9
+\BOOKMARK [2][-]{subsection.0.4.1}{Difference between Power Management and Virtual Power Management}{section.0.4}% 10
+\BOOKMARK [2][-]{subsection.0.4.2}{Mechanisms to manage power in virtualized platform}{section.0.4}% 11
+\BOOKMARK [2][-]{subsection.0.4.3}{Power Consumption Reduction}{section.0.4}% 12
+\BOOKMARK [1][-]{section.0.5}{Challenges related to virtual power management}{}% 13
+\BOOKMARK [2][-]{subsection.0.5.1}{ Different Purpose power management}{section.0.5}% 14
+\BOOKMARK [2][-]{subsection.0.5.2}{Conflict among simultaneous Power Management for different Purpose and Coordination}{section.0.5}% 15
+\BOOKMARK [2][-]{subsection.0.5.3}{Unfairness to some VM due to frequency scaling}{section.0.5}% 16
+\BOOKMARK [2][-]{subsection.0.5.4}{Introduction of different VM Scheduler}{section.0.5}% 17
+\BOOKMARK [2][-]{subsection.0.5.5}{How can we avoid unfairness to VMs by making changes to scheduler}{section.0.5}% 18
+\BOOKMARK [1][-]{section.0.6}{Conclusion}{}% 19
+\BOOKMARK [1][-]{section.0.6}{References}{}% 20

@@ -1,0 +1,345 @@
+%%% Time-stamp: <2015-04-15 00:55:14 sunthar>
+
+%%% $Log:$
+
+%\documentclass[11pt
+\documentclass[seminar,twoside]{iitbreport}
+
+
+%% Selectively comment out sections that you want to be left out but
+%% maintaining the page numbers and other \ref
+\includeonly{%
+  intro/introduction,
+  lit/literature,
+  expt/experimental,
+  rnd/results,
+}
+
+%%% Some commonly used packages (make sure your LaTeX installation
+%%% contains these packages, if not ask your senior to help installing
+%%% the packages)
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+\graphicspath{{expt/}}
+\usepackage{xcolor}
+\hypersetup{
+  colorlinks,
+  linkcolor={black!50!black},
+  citecolor={black!50!black},
+  urlcolor={black!80!black}
+}
+
+
+%%% Macro definitions for Commonly used symbols
+\newcommand{\etas}{\ensuremath{\eta_{\mathrm{s}}}}
+\newcommand{\Rey}{\ensuremath{\mathrm{Re}}}
+\newcommand{\avg}[1]{\ensuremath{\overline{#1}}}
+\newcommand{\tenpow}[1]{\ensuremath{\times 10^{#1}}}
+
+\newcommand{\pder}[2]{\ensuremath{\frac{\partial#1}{\partial#2}}}
+
+
+% Referencing macros
+\newcommand{\Eqref}[1]{Equation~\eqref{#1}}
+\newcommand{\Tabref}[1]{Table~\ref{#1}}
+\newcommand{\Figref}[1]{Figure~\ref{#1}}
+\newcommand{\Appref}[1]{Appendix~\ref{#1}}
+
+
+
+\begin{document}
+\title{Performance and Power Management of Virtualized Platform}
+\author{
+{Under the guidance of\\
+Prof Varsha Apte}\\ \vfill Abhishek Pratap Singh \\ 143050077\\}
+%\date{\today}
+
+\degree{Master of Technology}
+\dept{Computer Science}
+%\monthyear{May 2016}
+
+%\makecoverpage
+\maketitle
+
+\begin{abstract}
+This report is about what is virtualization and power management in virtualized platforms.
+There are many organizations and communities working in this field but xen and kvm are
+milestone in this field. xen started an open source project to host multiple guest OSes
+with an approach of paravirtualization. The interesting thing about kvm is it is integrated
+with Linux kernel so its development happening with development of Linux kernel. Vir-
+tualization has performance issue so hardware support was the need of virtualization.
+Nowadays Intel and AMD provides hardware support. kvm provides virtualization using
+this hardware support. “Which virtualization platform is best” is hot topic, there is a need
+of regular comparison among all virtualization options to find out which one is best in a
+particular situation or requirement. This report describes about comparison of virtualiza-
+tion platform as well. Virtualization provides Consolidation and VM migration strategy to
+power management but this facility(virtual platform) comes with complication to manage
+power in virtualized platform this report describes how to deal with power management
+in virtualized platform. In last section focus on coordination among different but simul-
+taneous power management plans, and some improvement in scheduler to make fair cpu
+capacity allocation during frequency scaling.
+\end{abstract}
+
+\pagenumbering{roman}
+\tableofcontents
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\renewcommand{\thesection}{\arabic{section}}
+\begingroup
+\let\cleardoublepage\clearpage
+%\listoftables
+%\listoffigures
+
+%\cleardoublepage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%\include{intro/introduction}
+%\include{lit/literature}
+%\include{expt/experimental}
+%\include{rnd/results}
+
+\section {Introduction}
+In Data centers there is need of different servers and different application, all of them can
+not run on same hardware without affecting each other, so there is need of deploying sepa-
+rate hardware for each such server and application this is very inefficient, costly and hard
+to manage. There is very nice solution for this problem is Virtualization. This is sim-
+ple one of motivation for virtualization Technology. Virtualization provides a platform
+which create illusion to application or user that he is working with bare metal (hardware).
+Virtualization should have some property to ensure feasibility and fairness to Virtual ma-
+chines 1. Isolation if more than one VM running on a same physical machine then one
+VM should not affect adversely the performance of others. 2. Support to various type
+of operating systems 3. Overhead to provide virtualization should be least [1]. xen is a
+hypervisor which provides virtualization first released in 2003 by university of Cambridge
+computer laboratory when xen was released hardware support for virtualization was not
+common so xen used paravirtualization approach to implement virtualization. Paravirtu-
+alization is a technique in which host operating system source code and guest operating
+system source code undergoes in modification to create virtual platform. kvm provides vir-
+tualization but it runs only on Linux systems but integration with Linux provides growth in
+development with Linux kernel. kvm depends on hardware support made available by Intel
+and AMD, and virtual machines run in guest mode of processor.[4] In next section Com-
+parison among xen, kvm and other Virtualization technologies. Power Management in
+Virtualized Platforms : In virtual platform access to hardware directly is not provided
+normally. If we try to give direct access to hardware then it creates some serious problems
+like violation of isolation property and there will be no difference in privilege level of host
+and guest and host. Challenges Related to Virtual Power Management :This report
+focuses mainly on two Challenges 1. Inconsistency when different power management act
+simultaneously in uncoordinated way [7] 2. When more than one VM running on a single
+physical machine and all VM allocated some fixed credits, lets consider some VMs with
+less credits running overloaded but physical machine is under loaded globally then DVFS
+detects this global under load and reduce frequency. This reduction in frequency affect
+adversely overloaded VMs [3].\cite{dvfs}.
+%{\bf Solution approches to solve above Challanges:} 
+\section{Virtualization Technologies}
+\subsection{Virtualization}
+Virtualization is a way to provide a platform which creates illusion of hardware ma-
+chine on which applications run without knowing it, but as time passed its meaning has
+changed because virtualization has an inherent problem of performance. To increase speed
+of execution there are two simple ways to solve this either provide hardware support to
+virtualization or make high performance hardware for host OS. first method is better than
+second one because it reduces emulating overhead on hypervisor so its speed improves,
+but in second way due to high performance you are not seeing effects of overhead. Vir-
+tualization provides independence on hardware, a server running on virtual machine can
+replicate and migrate according to need, so maintenance of server farm has become very
+easy and automatic. Live VM migration provides a way to use hardware efficiently in
+terms of power in technical term it is known as consolidation.
+\subsection{xen}
+xen is first independent open source virtualiztion technique which uses paravirtualiza-
+tion. xen purposed paravirtualization technique to implement virtual platform for guest
+OSes. In paravirtualization we need to modify some source code of host OS and guest
+OS. To ensure isolation they multiplex Guest OSes instead of process[1]. xen[1] Paper
+deals with x86 architecture which not virtualization-friendly so if you want to implement
+virtualization then performance will be reduced and complexity will be increased. That’s
+why they approached paravirtualization to make it faster. In this paper they didn’t fully
+virtualized I/O devices, they used an abstraction of devices which is quite similar to hard-
+ware. There is a hypervisor (xen itself the hypervisor) which works at higher privilege
+level and provide interface between host and guest and validate communication between
+Guest OS and Hardware. There is special guest Dom 0 which controls all operation re-
+lated to communication to network devices and i/o devices. Cons: 1. Xen need to modify
+in host OS and Guest OS some time it is not feasible, in case of commercial products
+which don’t reveal source code.
+2. In Disk Management if we are not using reorder barriers (i think reorder barrier
+rarely used) then we can turn of scheduling of request at Guest OS because Xen and disk
+scheduler also provide scheduling algorithm to reduce response time. So it is redundant work.
+
+\section{Comparison among xen, kvm and other Virtualization technologies}
+xen and kvm are different from each other in architecture and features. Hardware support
+was not available at the time when xen released, so to implement some special operation in
+guest OS which requires privilege and to reduce overhead xen used paravirtualization but
+now hardware support is available so xen provides both configuration full virtualization
+and paravirtualization. Difference in architecture: in xen guests perform all network and
+i/o operation with help of Dom 0, Dom 0 is a special guest to manage normal guests. But
+kvm is like extension of Linux kernel so it uses Linux kernel architecture as a hypervisor
+host and kvm uses same Linux ” fair scheduler “ so management of VM becomes very easy,
+For example: user can pin VM to a particular core by using normal Linux commands.
+\label{tab-table}
+\begin{tabularx}{\textwidth}{|X|X|X|}
+%\begin{tabular}{|c|c|c|}
+\hline
+ Features & KVM & XEN \\
+\hline
+architecture& Bare metal & Hosted \\
+\hline
+scheduler& (process scheduler) Linux fair schedulers versions& (VM scheduler) SEDF, Credit\\
+\hline
+Network Management& FIFO based scheduling& FIFO based scheduling\\
+\hline
+Memory Address Translation& Shadow page table, Hardware Assisted Pagetable&Direct Pagetable, shadow page table, Hardware assited pagetable\\
+\hline
+\end{tabularx}
+
+\subsection{Description of experiment done to find performance related data.}
+[8]Experiments : all experiments done with high performance computing system Lin-
+pack: to test execution speed by solving linear system of equations, PingPong Bandwidth
+: measures bandwidth of communication among CPU cores, Fast Fourier : measures the
+speed of execution of DFT, ping pong latency : measures latency of communication among
+CPU cores, SPEC OpenMP benchmark.
+\subsection{Performance analysis}
+High performance Computing : kvm got the highest rating point according to [8] and vir-
+tual box is very close to kvm, xen left behind in rating. In ping pong bandwidth virtual
+box shows results better than native because virtual box doesn’t pin its vcpu to a particular
+hardware cpu so there is a case when two or more vm running on same physical cpu that
+benefits in communication. Normal Performance system : [5] carried out some experi-
+ments CPU intensive, Memory intensive, Memory Bomb and conclude both kvm and xen
+performed approximately equal.
+\section{Power Management in Virtualized Platforms}
+reference [6] provided conceptual idea about this topic. Power management is directly
+related to hardware and to scale frequency there is need to communicate with hardware
+directly but direct access rights to VM violates crucial properties of virtualization like
+independence on hardware and isolation. So [6] provided nice solution for this use VPM
+states. VPM states (soft states) are virtual version of p states provided by Intel and these
+states are corresponding to performance To implement local power management at VM
+level, VM continuously monitors utilization and according to that they requests desirable
+soft state and these request for change in soft state sometimes can be simply ignored by
+Dom0 to avoid control on hardware. All these request forwarded to Dom 0, with the help
+of VM rules Dom0 takes appropriate action. VPM rule are rules and constraints to define
+policies.
+\subsection{Difference between Power Management and Virtual Power Management}
+Difference between Power Management and Virtual Power Management
+Datacentres use virtualization to make efficient use of hardware and for easy manage-
+ment of servers. In this scenario Power management at host level must be coordinated
+Contents with VMs. Otherwise, it will lose opurtinities of global power management for ex. consol-
+idation so it needs track details about load on VMs and load on physical machine.
+\subsection{Mechanisms to manage virtual power}
+\subsubsection{Hardware Scaling}
+In this strategy hardware support required, nowadays Intel hardware provides p states, p
+stands for performance these states provides the range of states in which lower states are
+high performance and consumes more power and higher states are corresponding to low
+performance and low power consumption. These different states maintained by varying
+frequency of CPU. So using this hardware support power management system can manage
+power consumption by using appropriate p state according to current utilization of CPU.
+\subsubsection{Soft Scaling}
+When hardware support is limited for example cpu operate only on 2 or 3 different frequencies so to make significant reduction 
+power consumption there is need of range of big range of p states.
+In this situation we can exploit scheduling process in hypervisor to emulate more virtual p states, hypervisor scheduler can
+assign time slice according to soft state of that VM For example if any VM requests to scale down frequency by 1/3 but CPU does not operate on 
+frequency/3 here we can use scheduler to emulate this situation by assigning time slice which is one third of original time slice\cite{ripal}
+There is a big draw back in this approach that if a memory bound process gets less time slice then it affects adversely because it 
+is not equivalent to frequency scaling operation, if frequency scaling available then memory bound process can get CPU for short period of time 
+and goes back to i/o operation but if time slice is reduced then it get stuck waiting for CPU meanwhile it could have done i/o instead of waiting for cpu, \cite{ripal} doesnt provide effective solution for this condition.
+\subsubsection{Consolidation}
+This method is most effective to reduce power consumption and it operates globally. A central unit tracks all VMs load and tries 
+to run VMs in a minimal set of hardware machine and turn down idle hardware machine. this strategy can be implemented easily by
+keeping records and tracking VMs load and their Hardware machine's load and search for a machine which can accommodate more VMs simultaneously
+if such Hardware machine found using live migration feature Vm can transfer from one machine to other machine.
+\subsubsection{Using C states}
+\cite{cstates} provided basic idea of this topic.
+When an system is idle it still consume a lot power and if goes for naive solution for this problem which is turn off idle systems 
+then due to frequent changes in states of system idle to busy, busy to idle. so its not feasible to turn off system it will lead to 
+drastic performance degradation because of large latency of turn on a system.
+So we can opt second approach is a hardware support ``C states'', c states stands for core power states c0 is operating state other
+are non-executing states sleeping states varies in degree of sleeping.
+Deeper states save more power but comes with drawback long latency to switch back in executing mode. 
+Actually these state implemented using turn of clocks and timers which are running in idle state of cpu.There is a Challenge 
+with deeper c states. Deeper states turn off clocks and timer so there is problem of timer skew.
+In this approach we can use tracking history of c states uses and prepare a c state plan based on the prediction. This approach is
+effective in periodic type  behavior.
+\subsection{Power Consumption Reduction}
+Using all above mechanism reduction in power consumption can be done effectively all mechanism discussed above works on different 
+different for example  {\bf Hardware Scaling and Soft Scaling} acts on local level with DVFS each VM tries minimize power consumed.
+{\bf Consolidation} works at global level which tracks VMs and physical machines tries to accommodate max no. VMs on the minimal set of physical 
+machine without affecting performance.
+{\bf C states} dealing with power consumption when cpu is idle.
+so applying all these approaches we can reduce power consumption effectively.
+%\subsection{How power consumption reduced and verification}
+
+\section{Challenges related to virtual power management}
+\subsection{ Different Purpose power management}
+\cite{nostruggle} provided the conceptual idea about this topic
+There are different power management which serves different goals. If a power demand goes high and it remains high then 
+there is risk of thermal fail-over which will destroy hardware this must not happen so there should be a plan to avoid thermal 
+fail-over even in overloaded situation.
+%\subsection{Difference between Power Management at Local level and Global level}
+%Local level power management rely on VMs and 
+\subsubsection{Average Power Consumption}
+This plan is to reduce average power consumption by using local and global power management.
+\subsubsection{Power Capping}
+This plan is to prevent thermal fail-over by restricting peak power consumption, as observed running system on peak power
+for very short period of time does not lead to thermal fail-over, so a soft power management is fine.
+\subsubsection{Power planning on the basis of history}
+This plan works when behavior of load is periodic and predictable for such situation this plan tries to ensure that CPUs
+provide max resource s well as doesn't cross max peak power at the time of peak load, it can be done by a simple idea that 
+before getting high load tries to finish previous work by giving some extra power.
+\subsection{Conflict among simultaneous Power Management for different Purpose}
+\cite{nostruggle} provided the conceptual idea about this topic
+When two or more different power management trying to achieve different goals there is great chance of Inconsistency.
+For example two power management plans working on same system one is for managing average power consumption and one is for managing
+max power and power budget.
+both power management can interfere each other by overwriting p states of system.
+There is one more scenario in which problem created due to lack of coordination between Consolidation plan running at global level and
+local power budget. Consolidation plan may accommodate VMs which violates power  .....
+\subsection{How can we coordinate different power management solutions managing power simultaneously}
+
+\subsection{Unfairness to some VM due to frequency scaling}
+{\bf Assumption:} There is no priority for any VM.
+Lets take a Case of Service Provider and Consumer.
+Consumer wants some computing resources (cpu) to run his VM but he wants to use a part of computation capacity so
+there is Credit allocation scheme which defines how much of computing resources will be available to consumer VM for example 
+40 credits means 40\% of computing resources available to VM provided that cpu frequency is max.
+Consider provider wants to reduce power consumption so there is power management which is using DVFS (Dynamic voltage and frequency scalling)
+DVFS monitors utilization of cpu in closed feedback loop if utilization becomes lower then it scale down frequency to reduce power 
+consumption  whenever this frequency scaled down there chances that some overloaded VM promised X credit computing resources getting 
+less amount of computing resources than promised because now frequency is scaled down. This crates unfairness toward VMs.
+\subsection{Introduction of different VM Scheduler}
+\subsubsection{ Fixed credit scheduler}
+In this type of VM scheduler if VM is promised X credit then VM will get at most X credit of computing resources even (Max credit-X) is unused and
+idle, and VM will get time slice according to credit X always.
+\subsubsection{ Variable credit scheduler}
+In this type of VM scheduler if VM is promised X credit then VM will get X credit of computing resources provided that VM needs it
+if VM doesnt need, it is underloaded then free computing resources will be distributed among other needy VM.
+For example : Three VMs are running each allocated 33 credits. and Max credit is 99.
+Two VMs are underloaded and one is overloaded then free time slices available from two underloaded VM to overloaded, {\bf free} time slice
+means that two underloaded VM must get computing resources according their need they must not suffer in terms of performance.
+If all VM are at full utilization then all three VM will get promised (time slice) computing resources No extra resources because computing resources is not free. 
+Did you notice that this variable credit scheduler solves ``unfairness to VM'' problem but there is a drawback in this solution that 
+this is not desirable for service provider because unless all VM are underloaded or idle frequency scale down action can not be done. 
+This is not desirable for provider because there are very less chance to scale down frequency 
+which results increased cost of power used, because power cost can not be minimized effectively in this case.
+Ideal situation is when all VM gets computing resources as they promised always and 
+and no chance to scale down frequency should be prevented due to providing extra free time slice. 
+\subsubsection{ DVFS aware credit scheduler}
+\cite{dvfs} provided conceptual idea about this topic. 
+This scheduler considers both provider and consumer, this scheduler recompute credit of a VM on each frequency scale operation.
+For example if one VM allocated 30 credits and max frequency is F, if frequency scaled down to F/2 then VM getting actually 15\% of computing
+resources so to make it equivalent to 30 credits at maximum frequency change credit 30 - 60. Now 60 credit with F/2 frequency is 
+equivalent to 30 credits.
+\subsection{How can we avoid unfairness to VMs by making changes to scheduler}
+\cite{dvfs} provided conceptual idea about this topic.
+As DVFS aware credit scheduler described above it is different from other schedulers because it focus on Actual credit.
+Let say RC = ( credit x freq1 ) is real credit if frequency decreases multiplicatively by factor d.
+Now new frequency is freq1/d to keep RC constant credit should be multiplied by d, RC = d x credit x freq1/d 
+d cancel out and RC becomes again credit x freq1.
+\section{Conclusion}
+As internet grows there is need of big cloud system and server farms, to manage easily and efficiently there is need of virtualization.
+Power consumption is directly related to environment so we are responsible to use it efficiently for this a good power management required.
+Combination of virtualization and power management is more effective.
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{plain}
+\bibliography{reference}
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

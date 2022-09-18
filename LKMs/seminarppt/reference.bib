@@ -1,0 +1,217 @@
+@Misc{google,
+  OPTkey =       {},
+  OPTauthor =    {},
+  title =        {{Google Engine}},
+  howpublished = {\url{http://www.google.co.in}},
+  OPTmonth =     {},
+  OPTyear =      {},
+  OPTnote =      {},
+  OPTannote =    {}
+}
+
+@inproceedings{xen,
+ author = {Barham, Paul Dragovic, Boris Fraser, Keir Hand, Steven
+ Harris, Tim Ho, Alex Neugebauer, Rolf Pratt, Ian Warfield, Andrew
+ },
+ title = {Xen and the art of virtualization},
+ year = {2003},
+ pages = {164-177},
+ publisher = { ACM SIGOPS Operating Systems Review},
+ doi={10.1145/1165389.945462},
+ isbn={1-58113-757-5},
+ issn={01635980},
+  pmid={685953},
+ }
+
+@inproceedings{kvm,
+ author = {Kivity, Avi
+ Lublin, Uri
+ Liguori, Anthony
+ Kamay, Yaniv
+ Laor, Dor
+ },
+ title = {kvm: the Linux virtual machine monitor},
+
+ year = {2007},
+ volume = {1},
+ pages = {225-230},
+ publisher = {Proceedings of the Linux Symposium},
+ pmid={18197987}
+ }
+
+@inproceedings{comparison,
+ author = {Younge, Andrew J.
+ Henschel, Robert
+
+ Brown, James T.
+ Laszewski, Gregor von
+ Qiu, Judy
+ Fox, Geoffrey C.
+ },
+ title = {Analysis of Virtualization Technologies for High Performance Computing Environments
+ },
+ year = {2011},
+ journal = {2011 IEEE 4th International Conference on Cloud Computing
+ },
+ pages = {9-16},
+ doi={10.1109/CLOUD.2011.29},
+ issn={2159-6182}
+ }
+@inproceedings{ripal,
+   author = {Nathuji, Ripal
+   Schwan, Karsten
+   },
+    title = "VirtualPower: coordinated power management in
+      virtualized enterprise systems",
+    proceedings={proceedings of twenty-first ACM SIGOPS symposium on Operating systems principles - SOSP '07},
+    year = {2007},
+     pages = {265},
+    DOI={10.1145/1294261.1294287},
+   isbn={9781595935915},
+  issn={978-1-59593-591-5},
+}
+
+@inproceedings{nostruggle,
+   author = {Raghavendra,Ramya
+     Ranganathan, Parthasarathy
+       Talwar, Vanish
+       Wang, Zhikui
+       Zhu, Xiaoyun
+   },
+    title = {No “ Power ” Struggles : Coordinated Multi-level Power Management for the Data Center
+    },
+    Journal={Solutions},
+
+    proceedings={of twenty-first ACM SIGOPS symposium on Operating systems principles - SOSP '07},
+    year = {2008},
+    volume = {36},
+    issue = {1},
+    pages = {48-59},
+    DOI={http://doi.acm.org/10.1145/1346281.134628},
+   isbn={9781595939586},
+  issn={01635980},
+}
+
+@inproceedings{dvfs,
+   author = {Hagimont, Daniel},
+    title = {Dvfs aware cpu credit enforcement in a virtualized system.},
+    Journal={Solutions},
+    confrence={Middleware 2013},
+    publication={ Springer Berlin Heidelberg},
+    year = {2013},
+    pages = {123-142},
+}
+
+@inproceedings{cstates,
+   author = {Gang Wei,Jinsong Liu,Jiajun Xu,Guanqun Lu,Ke Yu,Kevin Tian},
+    title = {The On-going Evolution of Power Management in Xen},
+    confrence={Middleware 2013},
+    publication={Open Source Technology Center (OTC), intel Coopertion},
+}
+
+
+@article{Hagimont2013,
+author = {Hagimont, Daniel and Kamga, Christine Mayap and Broto, Laurent and Tchana, Alain and Palma, Noel De},
+file = {:home/abhi/Downloads/chp\%3A10.1007\%2F978-3-642-45065-5\_7.pdf:pdf},
+keywords = {dvfs,scheduling,virtual machines},
+pages = {123--142},
+title = {{in a Virtualized System}},
+year = {2013}
+}
+@article{Kvmm,
+abstract = {Virtualization is a hot topic in operating systems these days. It is useful in many scenarios: server consolida- tion, virtual test environments, and for Linux enthusiasts who still can not decide which distribution is best. Re- cently, hardware vendors of commodity x86 processors have added virtualization extensions to the instruction set that can be utilized to write relatively simple virtual machine monitors. The Kernel-based Virtual Machine, or kvm, is a new Linux subsystem which leverages these virtualization extensions to add a virtual machine monitor (or hyper- visor) capability to Linux. Using kvm, one can create and run multiple virtual machines. These virtual ma- chines appear as normal Linux processes and integrate seamlessly with the rest of the system.},
+author = {Kivity, Avi and Lublin, Uri and Liguori, Anthony and Kamay, Yaniv and Laor, Dor},
+journal = {Proceedings of the Linux Symposium},
+pages = {225--230},
+pmid = {18197987},
+title = {{kvm: the Linux virtual machine monitor}},
+url = {https://www.kernel.org/doc/mirror/ols2007v1.pdf\#page=225},
+volume = {1},
+year = {2007}
+}
+@article{kvmreview,
+author = {Kadam, Pankaj R and Alone, Nilesh V},
+file = {:home/abhi/Downloads/D1221093414.pdf:pdf},
+number = {4},
+pages = {54--59},
+title = {{Review on KVM Hypervisor}},
+year = {2014}
+}
+@misc{xenm,
+abstract = {Numerous systems have been designed which use virtualization to subdivide the ample resources of a modern computer. Some require specialized hardware, or cannot support commodity operating systems. Some target 100\% binary compatibility at the expense of performance. Others sacrifice security or functionality for speed. Few offer resource isolation or performance guarantees; most provide only best-effort provisioning, risking denial of service.This paper presents Xen, an x86 virtual machine monitor which allows multiple commodity operating systems to share conventional hardware in a safe and resource managed fashion, but without sacrificing either performance or functionality. This is achieved by providing an idealized virtual machine abstraction to which operating systems such as Linux, BSD and Windows XP, can be ported with minimal effort.Our design is targeted at hosting up to 100 virtual machine instances simultaneously on a modern server. The virtualization approach taken by Xen is extremely efficient: we allow operating systems such as Linux and Windows XP to be hosted simultaneously for a negligible performance overhead --- at most a few percent compared with the unvirtualized case. We considerably outperform competing commercial and freely available solutions in a range of microbenchmarks and system-wide tests.},
+author = {Barham, Paul and Dragovic, Boris and Fraser, Keir and Hand, Steven and Harris, Tim and Ho, Alex and Neugebauer, Rolf and Pratt, Ian and Warfield, Andrew},
+booktitle = {ACM SIGOPS Operating Systems Review},
+doi = {10.1145/1165389.945462},
+isbn = {1-58113-757-5},
+issn = {01635980},
+number = {5},
+pages = {164},
+pmid = {685953},
+title = {{Xen and the art of virtualization}},
+volume = {37},
+year = {2003}
+}
+@article{xenkvm2008,
+abstract = {We present initial results from and quantitative analysis of two leading open source hypervisors, Xen and KVM. This study focuses on the overall performance, performance isolation, and scalability of virtual machines running on these hypervisors. ur comparison was carried out using a benchmar! suite that we developed to ma!e the results easily repeatable. ur goals are to understand how the different architectural decisions ta!en by different hypervisor developers affect the resulting hypervisors, to help hypervisor developers reali"e areas of improvement for their hypervisors, and to help users ma!e informed decisions about their choice of hypervisor.},
+author = {Deshane, Todd and Shepherd, Zachary and Matthews, J N and Ben-Yehuda, M and Shah, A and Rao, B},
+journal = {International Conference On Architectural Support For Programming Languages And Operating Systems Asplos},
+number = {Cli},
+pages = {23--25},
+title = {{Quantitative Comparison of Xen and KVM}},
+url = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.156.8134\&amp;rep=rep1\&amp;type=pdf},
+year = {2008}
+}
+@article{Manohar2013,
+author = {Manohar, Nivedita},
+doi = {10.1007/978-81-322-1524-0\_54},
+file = {:home/abhi/Downloads/MattOverby\_VirtualPerfSurvey.pdf:pdf},
+isbn = {9788132215233},
+issn = {18761100},
+journal = {Lecture Notes in Electrical Engineering},
+keywords = {Cloud computing,Hypervisor,Virtualization},
+pages = {461--470},
+title = {{A survey of virtualization techniques in cloud computing}},
+volume = {258 LNEE},
+year = {2013}
+}
+@article{comparisonm,
+abstract = {As Cloud computing emerges as a dominant paradigm in distributed systems, it is important to fully understand the underlying technologies that make Clouds possible. One technology, and perhaps the most important, is virtualization. Recently virtualization, through the use of hyper visors, has become widely used and well understood by many. However, there are a large spread of different hyper visors, each with their own advantages and disadvantages. This paper provides an in-depth analysis of some of today's commonly accepted virtualization technologies from feature comparison to performance analysis, focusing on the applicability to High Performance Computing environments using Future Grid resources. The results indicate virtualization sometimes introduces slight performance impacts depending on the hyper visor type, however the benefits of such technologies are profound and not all virtualization technologies are equal. From our experience, the KVM hyper visor is the optimal choice for supporting HPC applications within a Cloud infrastructure.},
+author = {Younge, Andrew J. and Henschel, Robert and Brown, James T. and von Laszewski, Gregor and Qiu, Judy and Fox, Geoffrey C.},
+doi = {10.1109/CLOUD.2011.29},
+isbn = {978-0-7695-4460-1},
+issn = {2159-6182},
+journal = {2011 IEEE 4th International Conference on Cloud Computing},
+pages = {9--16},
+title = {{Analysis of Virtualization Technologies for High Performance Computing Environments}},
+year = {2011}
+}
+@inproceedings{ripalm,
+abstract = {One of the first works, in which power management has been applied in the context of virtualized data centers. The authors have proposed an architecture of a data center’s resource management system where resource management is divided into local and global policies. At the local level the system leverages the guest OS’s power management strategies. The global manager gets the information on the current resource allocation from the local managers and applies its policy to decide whether the VM placement needs to be adapted. However, the authors have not proposed a specific policy for automatic resource management at the global level.},
+author = {Nathuji, Ripal and Schwan, Karsten},
+booktitle = {Proceedings of twenty-first ACM SIGOPS symposium on Operating systems principles - SOSP '07},
+doi = {10.1145/1294261.1294287},
+isbn = {9781595935915},
+issn = {978-1-59593-591-5},
+keywords = {power management,virtualization},
+pages = {265},
+title = {{VirtualPower: coordinated power management in virtualized enterprise systems}},
+url = {http://dl.acm.org/citation.cfm?id=1294287$\backslash$nhttp://portal.acm.org/citation.cfm?doid=1294261.1294287},
+year = {2007}
+}
+
+
+@misc{xenkvm2014,
+author = {Ms Jayshri Damodar Pagare 1, Dr. Nitin A Koli 
+Research Scholar, Sant Gadge Baba Amravati University, Amravati, India2
+Head, Computer Centre, Sant Gadge Baba Amravati University, Amravati, India},
+booktitle = {International Journal of Advanced Research in Computer and Communication Engineering
+},
+doi = {10.17148/IJARCCE},
+issn = {2278-1021}
+title = {{A technical review on comparison of Xen and
+KVM hypervisors: An analysis of virtualization
+technologies
+}},
+volume = {3},
+year = {2014}
+}

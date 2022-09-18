@@ -1,0 +1,2 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{Second Section}{13}{0}{1}

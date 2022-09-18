@@ -1,0 +1,46 @@
+\begin{thebibliography}{1}
+
+\bibitem{xen}
+Boris Fraser Keir Hand Steven Harris Tim Ho Alex Neugebauer Rolf Pratt Ian
+  Warfield~Andrew Barham, Paul~Dragovic.
+\newblock Xen and the art of virtualization.
+\newblock pages 164--177. ACM SIGOPS Operating Systems Review, 2003.
+
+\bibitem{dvfs}
+Daniel Hagimont.
+\newblock Dvfs aware cpu credit enforcement in a virtualized system.
+\newblock pages 123--142, 2013.
+
+\bibitem{kvm}
+Uri Liguori Anthony Kamay Yaniv Laor~Dor Kivity, Avi~Lublin.
+\newblock kvm: the linux virtual machine monitor.
+\newblock volume~1, pages 225--230. Proceedings of the Linux Symposium, 2007.
+
+\bibitem{xenkvm2014}
+Sant Gadge Baba Amravati University Amravati India2 Head Computer Centre Sant
+  Gadge Baba Amravati University Amravati~India Ms~Jayshri Damodar Pagare~1,
+  Dr. Nitin A Koli Research~Scholar.
+
+\bibitem{ripalm}
+Ripal Nathuji and Karsten Schwan.
+\newblock {VirtualPower: coordinated power management in virtualized enterprise
+  systems}.
+\newblock In {\em Proceedings of twenty-first ACM SIGOPS symposium on Operating
+  systems principles - SOSP '07}, page 265, 2007.
+
+\bibitem{nostruggle}
+Parthasarathy Talwar Vanish Wang Zhikui Zhu~Xiaoyun Raghavendra,
+  Ramya~Ranganathan.
+\newblock No “ power ” struggles : Coordinated multi-level power management
+  for the data center.
+\newblock volume~36, pages 48--59, 2008.
+
+\bibitem{comparisonm}
+Andrew~J. Younge, Robert Henschel, James~T. Brown, Gregor von Laszewski, Judy
+  Qiu, and Geoffrey~C. Fox.
+\newblock {Analysis of Virtualization Technologies for High Performance
+  Computing Environments}.
+\newblock {\em 2011 IEEE 4th International Conference on Cloud Computing},
+  pages 9--16, 2011.
+
+\end{thebibliography}

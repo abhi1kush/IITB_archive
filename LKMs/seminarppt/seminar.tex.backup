@@ -1,0 +1,281 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Short title]{Seminar Presentation} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Abhishek Pratap Singh} % Your name
+\institute[IITB] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Indian Institute Of Technology \\ % Your institution for the title page
+\medskip
+\textit{abhi1kush@gmail.com} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+%\section{Introduction} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+%\subsection{Virtualization} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\begin{frame}
+\frametitle{Introduction}
+\begin{columns} % This creates a frame with multiple columns.
+\begin{column}{0.5\textwidth} % The first column will be 50% as wide as the width of text on the page.
+
+\end{column}
+
+%\pause
+
+\begin{column}{0.5\textwidth} % Now begins our second column.
+%\includegraphics[width=5cm, height=5cm]{scene.jpg} % Beamer doesn't like to display .eps files. This .png was converted from .eps using Adobe Acrobat. The file graph1.png should be in the same folder as the .tex file.
+\begin{center}
+%\textcolor{orange}{$y=f(x)$}, \textcolor{red}{$y=x^2$}, \textcolor{green}{$y=-x^2$} % This changes the text color.
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\begin{itemize}
+\item Virtualization % Each \pause creates a new slide within the frame.
+\item Xen
+\item kvm
+\item Comparison between Xen and kvm
+\item Power management in Virtualized Platform
+\item Conflict among different Power Management
+\item Coordination
+\item Unfairness to VMs
+\item Conclusion
+\end{itemize} 
+\end{frame}
+
+\begin{frame} 
+\frametitle{Xen}
+\begin{itemize}
+\item Open source Hypervisor released in 2003. 
+\item Implemented virtualization through Paravirtualization.
+\item Used abstracted device instead of virtualized devices.
+\item Diveded functionality in Hypervisor and Dom0.
+\end{itemize}
+\end{frame}
+
+\begin{frame} 
+\frametitle{Xen Challenges}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Problems
+\item Implementation of Virtualization with low overhead of Virtualization.
+\item Emulation of privileged instruction in absence hardware support.
+\item tlb flush at each address space switch.
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+ \item Solution Approach
+ \item Use of shadow page table to implement translation 
+ Guest Virtual to Host Physical Address instead of translating guest virtual address to guest physical address\cite{xen}.
+ \item Paravirtualization : modification of code in host OS and guest OS.\cite{xen}
+ \item Simple approach to solve tlb flush: keep Xen in a fixed location.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame} 
+\frametitle{kvm}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Comparison between Xen and kvm}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Xen
+\item Architecture: Xen uses Domain 0 to manage I/O operation, Network operations.
+\item 
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Power Management in Virtualized Platform}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Conflict among different Power Management}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Coordination among different Power Management}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Unfairness to VMs}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+\section{Second Section}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{References}
+\footnotesize{
+\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+\bibitem[Smith, 2012]{p1} John Smith (2012)
+\newblock Title of the publication
+\newblock \emph{Journal Name} 12(3), 45 -- 678.
+\bibitem[Xen,2003]{xen} Boris Fraser Keir Hand Steven Harris Tim Ho Alex Neugebauer Rolf Pratt Ian
+Warfield Andrew Barham, Paul Dragovic. 
+\newblock Xen and the art of virtualization
+\newblock \emph{ACM SIGOPS Operating Systems Review}. pages 164–177, 2003.
+
+[2] Jiajun Xu Guanqun Lu Ke Yu Kevin Tian Gang Wei, Jinsong Liu. The on-going
+evolution of power management in xen.
+[3] Daniel Hagimont. Dvfs aware cpu credit enforcement in a virtualized system. pages
+123–142, 2013.
+\bibitem[kvm,2007]{kvm} Uri Liguori Anthony Kamay Yaniv Laor Dor Kivity, Avi Lublin. kvm: the linux
+virtual machine monitor. volume 1, pages 225–230. Proceedings of the Linux Sym-
+posium, 2007.
+\bibitem{} Sant Gadge Baba Amravati University Amravati India2 Head Computer Centre Sant
+Gadge Baba Amravati University Amravati India Ms Jayshri Damodar Pagare 1, Dr.
+Nitin A Koli Research Scholar.
+[6] Ripal Nathuji and Karsten Schwan. VirtualPower: coordinated power management
+in virtualized enterprise systems. In Proceedings of twenty-first ACM SIGOPS sym-
+posium on Operating systems principles - SOSP ’07, page 265, 2007.
+[7] Parthasarathy Talwar Vanish Wang Zhikui Zhu Xiaoyun Raghavendra, Ramya Ran-
+ganathan. No power struggles : Coordinated multi-level power management for the
+data center. volume 36, pages 48–59, 2008.
+[8] Andrew J. Younge, Robert Henschel, James T. Brown, Gregor von Laszewski, Judy
+Qiu, and Geoffrey C. Fox. Analysis of Virtualization Technologies for High Perfor-
+
+\end{thebibliography}
+}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{Thank You}}
+\end{frame}
+%----------------------------------------------------------------------------------------
+
+\end{document} 
