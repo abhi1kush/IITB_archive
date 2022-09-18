@@ -1,0 +1,65 @@
+#include <linux/io.h>
+#include <linux/slab.h>
+#include <linux/delay.h>
+#include <linux/mm.h>
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/init.h>
+#include <linux/sched.h>
+#include <linux/mm_types.h>
+#include <linux/timer.h>
+#include <asm/page.h>
+#include <asm/current.h>
+#include <linux/sched.h>
+
+extern (*context_counter)(struct task_struct *,struct task_struct *,long );
+extern (* rq_size)(long,unsigned int, unsigned int);
+
+int pid,prio;
+
+static int sched_counter[4],per_pid_switch_counter[4],grqsize[4];
+static int gcpu;
+static unsigned int entryy,exitt,total;
+
+
+int hk_context_counter(struct task_struct next,struct task_struct prev,long tv_nsec,int cpu)
+{
+	sched_counter[cpu]++;
+	if(next->pid == pid)
+	{
+		per_pid_switch_counter[cpu]++;
+		entryy = tv_nsec;
+	}
+	else if(prev->pid == pid)
+	{
+		exitt= tv_nsec;
+		total+= tv_nsec;
+	}
+}
+
+int hk_rq_size(long cpu,unsigned int rqsize,int nr_switches)
+{
+	gcpu=cpu;
+	grqsize[cpu]=rqsize;
+}
+
+static int init(void)
+{
+	context_counter = hk_context_counter;
+	rq_size=hk_rq_size;
+  	printk(KERN_INFO "inside the %s function\n", __FUNCTION__);
+  	return 0;
+}
+
+static void  cleanup(void)
+{
+  	rq_size=NULL;
+  	context_counter=NULL;
+  	printk(KERN_INFO "lkm removed\n");
+}
+
+module_init(init);
+module_exit(cleanup);
+MODULE_AUTHOR("Abhishek Singh");
+MODULE_LICENSE("GPL");
+MODULE_DESCRIPTION("Kernel tweaks");

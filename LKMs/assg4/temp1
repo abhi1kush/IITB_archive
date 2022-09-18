@@ -1,0 +1,27 @@
+0
+#pid: 0 No of CS: cpu0 75165 cpu1 68368 cpu 67479 cpu 67131
+$pid: 0 No of CS: cpu0 790 cpu1 1272 cpu 1389 cpu 1619
+11
+#pid: 0 No of CS: cpu0 89284 cpu1 85292 cpu 87343 cpu 86024
+$pid: 0 No of CS: cpu0 8942 cpu1 10121 cpu 9659 cpu 11790
+22
+#pid: 0 No of CS: cpu0 113863 cpu1 113983 cpu 117257 cpu 107397
+$pid: 0 No of CS: cpu0 18284 cpu1 15688 cpu 18571 cpu 16138
+33
+#pid: 0 No of CS: cpu0 139109 cpu1 144788 cpu 161130 cpu 136237
+$pid: 0 No of CS: cpu0 20175 cpu1 19934 cpu 24813 cpu 21756
+44
+#pid: 0 No of CS: cpu0 181996 cpu1 171371 cpu 190026 cpu 175551
+$pid: 0 No of CS: cpu0 21273 cpu1 20420 cpu 19993 cpu 29590
+55
+#pid: 0 No of CS: cpu0 218860 cpu1 209203 cpu 222729 cpu 211973
+$pid: 0 No of CS: cpu0 20198 cpu1 21020 cpu 20470 cpu 27026
+66
+#pid: 0 No of CS: cpu0 255007 cpu1 243975 cpu 254408 cpu 260040
+$pid: 0 No of CS: cpu0 20122 cpu1 24568 cpu 19908 cpu 23259
+77
+#pid: 0 No of CS: cpu0 291002 cpu1 295518 cpu 288861 cpu 294232
+$pid: 0 No of CS: cpu0 22534 cpu1 23886 cpu 19900 cpu 22004
+88
+#pid: 0 No of CS: cpu0 324877 cpu1 332128 cpu 323536 cpu 350559
+$pid: 0 No of CS: cpu0 20004 cpu1 20877 cpu 19947 cpu 27754
