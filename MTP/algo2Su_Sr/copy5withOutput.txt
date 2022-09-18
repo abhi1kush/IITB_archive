@@ -1,0 +1,11 @@
+#copy5
+y = 0
+while x==0 :
+	pass
+y = 1
+Verify '=' : Low <= y
+Verify while : x <= Empty
+Verify '=' : Low <= y
+Verify seq 0 : Low <= y
+Verify seq 1 : x <= y
+Verify PC : Low <= y

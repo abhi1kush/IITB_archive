@@ -1,0 +1,102 @@
+Module(body=[
+    Import(names=[
+        alias(name='thread', asname=None),
+      ]),
+    Import(names=[
+        alias(name='time', asname=None),
+      ]),
+    Import(names=[
+        alias(name='threading', asname=None),
+      ]),
+    Import(names=[
+        alias(name='sys', asname=None),
+      ]),
+    Assign(targets=[
+        Name(id='x', ctx=Store()),
+      ], value=Num(n=5)),
+    Assign(targets=[
+        Name(id='z', ctx=Store()),
+      ], value=Num(n=1)),
+    Assign(targets=[
+        Name(id='sum', ctx=Store()),
+      ], value=Num(n=23)),
+    Assign(targets=[
+        Name(id='y', ctx=Store()),
+      ], value=Num(n=0)),
+    FunctionDef(name='copy6', args=arguments(args=[], vararg=None, kwarg=None, defaults=[]), body=[
+        Print(dest=None, values=[
+            Str(s='thr1'),
+          ], nl=True),
+        Global(names=[
+            'z',
+          ]),
+        Global(names=[
+            'sum',
+          ]),
+        Global(names=[
+            'y',
+          ]),
+        Assign(targets=[
+            Name(id='z', ctx=Store()),
+          ], value=Num(n=0)),
+        Assign(targets=[
+            Name(id='sum', ctx=Store()),
+          ], value=Num(n=0)),
+        Assign(targets=[
+            Name(id='y', ctx=Store()),
+          ], value=Num(n=0)),
+        While(test=Compare(left=Name(id='z', ctx=Load()), ops=[
+            Eq(),
+          ], comparators=[
+            Num(n=0),
+          ]), body=[
+            TryExcept(body=[
+                Assign(targets=[
+                    Name(id='sum', ctx=Store()),
+                  ], value=BinOp(left=Name(id='sum', ctx=Load()), op=Add(), right=Name(id='x', ctx=Load()))),
+              ], handlers=[
+                ExceptHandler(type=Name(id='OverflowError', ctx=Load()), name=None, body=[
+                    Print(dest=None, values=[
+                        Str(s='sum overflow :'),
+                        Name(id='sum', ctx=Load()),
+                      ], nl=True),
+                  ]),
+              ], orelse=[]),
+            Assign(targets=[
+                Name(id='y', ctx=Store()),
+              ], value=BinOp(left=Name(id='y', ctx=Load()), op=Add(), right=Num(n=1))),
+          ], orelse=[]),
+      ], decorator_list=[]),
+    TryExcept(body=[
+        Expr(value=Call(func=Attribute(value=Name(id='thread', ctx=Load()), attr='start_new_thread', ctx=Load()), args=[
+            Name(id='copy6', ctx=Load()),
+            Tuple(elts=[], ctx=Load()),
+          ], keywords=[], starargs=None, kwargs=None)),
+      ], handlers=[
+        ExceptHandler(type=None, name=None, body=[
+            Print(dest=None, values=[
+                Str(s='Error: unable to start thread'),
+              ], nl=True),
+          ]),
+      ], orelse=[]),
+    Assign(targets=[
+        Name(id='i', ctx=Store()),
+      ], value=Num(n=100000000)),
+    While(test=Compare(left=Name(id='i', ctx=Load()), ops=[
+        Gt(),
+      ], comparators=[
+        Num(n=0),
+      ]), body=[
+        Assign(targets=[
+            Name(id='i', ctx=Store()),
+          ], value=BinOp(left=Name(id='i', ctx=Load()), op=Sub(), right=Num(n=1))),
+      ], orelse=[]),
+    Print(dest=None, values=[
+        Str(s='y'),
+        Name(id='y', ctx=Load()),
+        Str(s='Max/y='),
+        BinOp(left=Attribute(value=Name(id='sys', ctx=Load()), attr='maxint', ctx=Load()), op=Div(), right=Name(id='y', ctx=Load())),
+        Str(s='sum :'),
+        Name(id='sum', ctx=Load()),
+      ], nl=True),
+  ])

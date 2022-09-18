@@ -1,0 +1,42 @@
+#copy4 Global flow in concurrent programs
+import thread
+import time
+import threading
+
+
+def thread1():
+    global x
+    global e0
+    global e1
+    if x==0:
+        e0 = False
+    else:
+        e1 = False
+
+def thread2(): 
+    global e0
+    global e1
+    global y
+    while e0:
+        pass
+
+    y = 1
+    e1 = False
+
+def thread3():
+    global e1
+    global e0
+    global y
+    while e1:
+        pass
+    y = 0
+    e0 = False
+
+try:
+    thread.start_new_thread(thread1,())
+    thread.start_new_thread(thread2,())
+    thread.start_new_thread(thread3,())
+except:
+    print "Error: unable to start thread"
+
+

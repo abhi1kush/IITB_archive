@@ -1,0 +1,17 @@
+#Procedure copy1
+z=0
+y=0
+if x == 0:
+	z=1
+if z==0:
+	y=1
+Verify '=' : Low <= z
+Verify '=' : Low <= y
+Verify '=' : Low <= z
+Verify if: x <= z
+Verify '=' : Low <= y
+Verify if: z <= y
+Verify seq 0 : Low <= y * z
+Verify seq 1 : Low <= y * z
+Verify seq 2 : x <= y
+Verify PC : Low <= y * z

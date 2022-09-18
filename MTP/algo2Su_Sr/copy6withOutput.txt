@@ -1,0 +1,18 @@
+z = 0
+sum = 0
+y = 0
+while z == 0 :
+	sum = sum + x       
+        y = y + 1
+Verify '=' : Low <= z
+Verify '=' : Low <= sum
+Verify '=' : Low <= y
+Verify '=' : x + sum <= sum
+Verify '=' : y <= y
+Verify seq 0 : x + sum <= y
+Verify PC : Low <= y * sum
+Verify while : y + x + sum + z <= y * sum
+Verify seq 0 : Low <= y * sum
+Verify seq 1 : Low <= y * sum
+Verify seq 2 : Low <= y * sum
+Verify PC : y + x + sum <= y * sum * z

@@ -1,0 +1,80 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='var_c', ctx=Store()),
+      ], value=Num(n=2)),
+    Assign(targets=[
+        Name(id='cond1', ctx=Store()),
+      ], value=Num(n=1)),
+    Assign(targets=[
+        Name(id='cond2', ctx=Store()),
+      ], value=Num(n=2)),
+    Assign(targets=[
+        Name(id='cnd3', ctx=Store()),
+      ], value=Num(n=3)),
+    Assign(targets=[
+        Name(id='cnd4', ctx=Store()),
+      ], value=Num(n=4)),
+    Assign(targets=[
+        Name(id='cond', ctx=Store()),
+      ], value=Num(n=5)),
+    Assign(targets=[
+        Name(id='a', ctx=Store()),
+        Name(id='b', ctx=Store()),
+        Name(id='d', ctx=Store()),
+        Name(id='e', ctx=Store()),
+      ], value=Num(n=9)),
+    While(test=Compare(left=Name(id='cond1', ctx=Load()), ops=[
+        Gt(),
+      ], comparators=[
+        Num(n=0),
+      ]), body=[
+        Assign(targets=[
+            Name(id='var_c', ctx=Store()),
+          ], value=Num(n=2)),
+        While(test=Compare(left=Name(id='cond2', ctx=Load()), ops=[
+            Gt(),
+          ], comparators=[
+            Num(n=0),
+          ]), body=[
+            Assign(targets=[
+                Name(id='var_c', ctx=Store()),
+              ], value=Num(n=1)),
+            If(test=Compare(left=Name(id='a', ctx=Load()), ops=[
+                Gt(),
+              ], comparators=[
+                Name(id='b', ctx=Load()),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='a', ctx=Store()),
+                  ], value=Num(n=0)),
+              ], orelse=[]),
+            While(test=Compare(left=Name(id='cond3', ctx=Load()), ops=[
+                Gt(),
+              ], comparators=[
+                Num(n=0),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='var_c', ctx=Store()),
+                  ], value=Num(n=4)),
+              ], orelse=[]),
+          ], orelse=[]),
+        While(test=Compare(left=Name(id='cond4', ctx=Load()), ops=[
+            Gt(),
+          ], comparators=[
+            Num(n=0),
+          ]), body=[
+            Assign(targets=[
+                Name(id='var_c', ctx=Store()),
+              ], value=Num(n=0)),
+          ], orelse=[]),
+      ], orelse=[]),
+    While(test=Compare(left=Name(id='cond5', ctx=Load()), ops=[
+        Gt(),
+      ], comparators=[
+        Num(n=0),
+      ]), body=[
+        Assign(targets=[
+            Name(id='var_c', ctx=Store()),
+          ], value=Num(n=100)),
+      ], orelse=[]),
+  ])

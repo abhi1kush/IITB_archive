@@ -1,0 +1,44 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='a', ctx=Store()),
+      ], value=Num(n=1)),
+    Assign(targets=[
+        Name(id='b', ctx=Store()),
+      ], value=Num(n=8)),
+    Assign(targets=[
+        Name(id='c', ctx=Store()),
+      ], value=Num(n=6)),
+    If(test=Compare(left=Name(id='a', ctx=Load()), ops=[
+        Gt(),
+      ], comparators=[
+        Name(id='b', ctx=Load()),
+      ]), body=[
+        If(test=Compare(left=Name(id='b', ctx=Load()), ops=[
+            Gt(),
+          ], comparators=[
+            Name(id='c', ctx=Load()),
+          ]), body=[
+            Print(dest=None, values=[
+                Str(s='c is smallest'),
+              ], nl=True),
+          ], orelse=[
+            Print(dest=None, values=[
+                Str(s='b is smallest'),
+              ], nl=True),
+          ]),
+      ], orelse=[
+        If(test=Compare(left=Name(id='a', ctx=Load()), ops=[
+            Gt(),
+          ], comparators=[
+            Name(id='c', ctx=Load()),
+          ]), body=[
+            Print(dest=None, values=[
+                Str(s='c is smallest'),
+              ], nl=True),
+          ], orelse=[
+            Print(dest=None, values=[
+                Str(s='a is smallest'),
+              ], nl=True),
+          ]),
+      ]),
+  ])

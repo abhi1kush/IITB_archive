@@ -1,0 +1,9 @@
+# a is a local var
+def fun(x, y, z):
+    a = x
+    y = a
+    a = z
+fun(x, y, z)
+#############################################
+got fun call
+xLabel <= y

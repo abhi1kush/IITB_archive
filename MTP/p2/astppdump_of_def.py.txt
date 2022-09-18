@@ -1,0 +1,22 @@
+Module(body=[
+    FunctionDef(name='fun', args=arguments(args=[
+        Name(id='x', ctx=Param()),
+        Name(id='y', ctx=Param()),
+        Name(id='z', ctx=Param()),
+      ], vararg=None, kwarg=None, defaults=[]), body=[
+        Assign(targets=[
+            Name(id='a', ctx=Store()),
+          ], value=Name(id='x', ctx=Load())),
+        Assign(targets=[
+            Name(id='y', ctx=Store()),
+          ], value=Name(id='a', ctx=Load())),
+        Assign(targets=[
+            Name(id='a', ctx=Store()),
+          ], value=Name(id='z', ctx=Load())),
+      ], decorator_list=[]),
+    Expr(value=Call(func=Name(id='fun', ctx=Load()), args=[
+        Name(id='x', ctx=Load()),
+        Name(id='y', ctx=Load()),
+        Name(id='z', ctx=Load()),
+      ], keywords=[], starargs=None, kwargs=None)),
+  ])

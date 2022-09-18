@@ -1,0 +1,18 @@
+z = 0
+sum = 0
+y = 0
+while z == 0 :
+	sum = sum + x       
+        y = y + 1
+
+####################################################
+Low <= z
+Low <= y
+### While Iteration: 1
+zLabel + xLabel + yLabel <= y
+-> PC: [['xLabel', 'yLabel', 'zLabel'], ['zLabel']]
+### While Iteration: 2
+zLabel + xLabel + yLabel <= y
+zLabel + xLabel + yLabel <= y
+-> PC: [['xLabel', 'yLabel', 'zLabel'], ['zLabel']]
+Saturation point of loop!

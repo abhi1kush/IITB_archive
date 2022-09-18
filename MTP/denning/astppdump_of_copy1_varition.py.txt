@@ -1,0 +1,56 @@
+Module(body=[
+    FunctionDef(name='copy1', args=arguments(args=[
+        Name(id='x', ctx=Param()),
+        Name(id='y', ctx=Param()),
+      ], vararg=None, kwarg=None, defaults=[]), body=[
+        Print(dest=None, values=[
+            Name(id='x', ctx=Load()),
+            Name(id='y', ctx=Load()),
+          ], nl=True),
+        Assign(targets=[
+            Name(id='c', ctx=Store()),
+          ], value=Num(n=2)),
+        Assign(targets=[
+            Name(id='z', ctx=Store()),
+          ], value=Num(n=0)),
+        Assign(targets=[
+            Name(id='a', ctx=Store()),
+          ], value=Num(n=9)),
+        Assign(targets=[
+            Name(id='y', ctx=Store()),
+          ], value=Name(id='z', ctx=Load())),
+        Assign(targets=[
+            Name(id='x', ctx=Store()),
+          ], value=BinOp(left=UnaryOp(op=USub(), operand=Name(id='y', ctx=Load())), op=Add(), right=BinOp(left=Name(id='a', ctx=Load()), op=Mult(), right=BinOp(left=Name(id='z', ctx=Load()), op=Pow(), right=Name(id='c', ctx=Load()))))),
+        If(test=Compare(left=Name(id='x', ctx=Load()), ops=[
+            Eq(),
+          ], comparators=[
+            Name(id='z', ctx=Load()),
+          ]), body=[
+            Assign(targets=[
+                Name(id='z', ctx=Store()),
+              ], value=Name(id='y', ctx=Load())),
+          ], orelse=[
+            If(test=Compare(left=BinOp(left=BinOp(left=Name(id='x', ctx=Load()), op=Mult(), right=Name(id='y', ctx=Load())), op=Pow(), right=Name(id='z', ctx=Load())), ops=[
+                Lt(),
+              ], comparators=[
+                BinOp(left=BinOp(left=Name(id='c', ctx=Load()), op=Sub(), right=Name(id='y', ctx=Load())), op=Add(), right=BinOp(left=Name(id='a', ctx=Load()), op=Mult(), right=BinOp(left=Name(id='z', ctx=Load()), op=Pow(), right=Name(id='c', ctx=Load())))),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='z', ctx=Store()),
+                  ], value=Name(id='c', ctx=Load())),
+              ], orelse=[
+                Assign(targets=[
+                    Name(id='z', ctx=Store()),
+                  ], value=Name(id='a', ctx=Load())),
+              ]),
+          ]),
+        If(test=Compare(left=BinOp(left=Name(id='x', ctx=Load()), op=Mult(), right=Name(id='y', ctx=Load())), ops=[
+            Lt(),
+          ], comparators=[
+            BinOp(left=BinOp(left=Name(id='x', ctx=Load()), op=Sub(), right=Name(id='y', ctx=Load())), op=Add(), right=BinOp(left=Name(id='a', ctx=Load()), op=Mult(), right=BinOp(left=Name(id='z', ctx=Load()), op=Pow(), right=Name(id='c', ctx=Load())))),
+          ]), body=[
+            Pass(),
+          ], orelse=[]),
+      ], decorator_list=[]),
+  ])

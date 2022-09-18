@@ -1,0 +1,132 @@
+Module(body=[
+    Import(names=[
+        alias(name='thread', asname=None),
+      ]),
+    Import(names=[
+        alias(name='time', asname=None),
+      ]),
+    Import(names=[
+        alias(name='threading', asname=None),
+      ]),
+    Assign(targets=[
+        Name(id='x', ctx=Store()),
+      ], value=Num(n=0)),
+    Assign(targets=[
+        Name(id='y', ctx=Store()),
+      ], value=Num(n=7)),
+    Assign(targets=[
+        Name(id='e0', ctx=Store()),
+      ], value=Name(id='True', ctx=Load())),
+    Assign(targets=[
+        Name(id='e1', ctx=Store()),
+      ], value=Name(id='True', ctx=Load())),
+    FunctionDef(name='thread1', args=arguments(args=[], vararg=None, kwarg=None, defaults=[]), body=[
+        Print(dest=None, values=[
+            Str(s='thr1'),
+          ], nl=True),
+        Global(names=[
+            'x',
+          ]),
+        Global(names=[
+            'e0',
+          ]),
+        Global(names=[
+            'e1',
+          ]),
+        If(test=Compare(left=Name(id='x', ctx=Load()), ops=[
+            Eq(),
+          ], comparators=[
+            Num(n=0),
+          ]), body=[
+            Assign(targets=[
+                Name(id='e0', ctx=Store()),
+              ], value=Name(id='False', ctx=Load())),
+          ], orelse=[
+            Assign(targets=[
+                Name(id='e1', ctx=Store()),
+              ], value=Name(id='False', ctx=Load())),
+          ]),
+      ], decorator_list=[]),
+    FunctionDef(name='thread2', args=arguments(args=[], vararg=None, kwarg=None, defaults=[]), body=[
+        Print(dest=None, values=[
+            Str(s='thr2'),
+          ], nl=True),
+        Global(names=[
+            'e0',
+          ]),
+        Global(names=[
+            'e1',
+          ]),
+        Global(names=[
+            'y',
+          ]),
+        While(test=Name(id='e0', ctx=Load()), body=[
+            Pass(),
+            Assign(targets=[
+                Name(id='y', ctx=Store()),
+              ], value=Num(n=1)),
+            Assign(targets=[
+                Name(id='e1', ctx=Store()),
+              ], value=Name(id='False', ctx=Load())),
+          ], orelse=[]),
+      ], decorator_list=[]),
+    FunctionDef(name='thread3', args=arguments(args=[], vararg=None, kwarg=None, defaults=[]), body=[
+        Print(dest=None, values=[
+            Str(s='thr3'),
+          ], nl=True),
+        Global(names=[
+            'e1',
+          ]),
+        Global(names=[
+            'e0',
+          ]),
+        Global(names=[
+            'y',
+          ]),
+        While(test=Name(id='e1', ctx=Load()), body=[
+            Pass(),
+          ], orelse=[]),
+        Assign(targets=[
+            Name(id='y', ctx=Store()),
+          ], value=Num(n=0)),
+        Assign(targets=[
+            Name(id='e0', ctx=Store()),
+          ], value=Name(id='False', ctx=Load())),
+      ], decorator_list=[]),
+    TryExcept(body=[
+        Expr(value=Call(func=Attribute(value=Name(id='thread', ctx=Load()), attr='start_new_thread', ctx=Load()), args=[
+            Name(id='thread1', ctx=Load()),
+            Tuple(elts=[], ctx=Load()),
+          ], keywords=[], starargs=None, kwargs=None)),
+        Expr(value=Call(func=Attribute(value=Name(id='thread', ctx=Load()), attr='start_new_thread', ctx=Load()), args=[
+            Name(id='thread2', ctx=Load()),
+            Tuple(elts=[], ctx=Load()),
+          ], keywords=[], starargs=None, kwargs=None)),
+        Expr(value=Call(func=Attribute(value=Name(id='thread', ctx=Load()), attr='start_new_thread', ctx=Load()), args=[
+            Name(id='thread3', ctx=Load()),
+            Tuple(elts=[], ctx=Load()),
+          ], keywords=[], starargs=None, kwargs=None)),
+      ], handlers=[
+        ExceptHandler(type=None, name=None, body=[
+            Print(dest=None, values=[
+                Str(s='Error: unable to start thread'),
+              ], nl=True),
+          ]),
+      ], orelse=[]),
+    Assign(targets=[
+        Name(id='i', ctx=Store()),
+      ], value=Num(n=1000000)),
+    While(test=Compare(left=Name(id='i', ctx=Load()), ops=[
+        Gt(),
+      ], comparators=[
+        Num(n=0),
+      ]), body=[
+        Assign(targets=[
+            Name(id='i', ctx=Store()),
+          ], value=BinOp(left=Name(id='i', ctx=Load()), op=Sub(), right=Num(n=1))),
+      ], orelse=[]),
+    Print(dest=None, values=[
+        Name(id='x', ctx=Load()),
+        Name(id='y', ctx=Load()),
+      ], nl=True),
+  ])

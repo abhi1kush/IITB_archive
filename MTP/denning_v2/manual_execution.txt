@@ -1,0 +1,85 @@
+if_half = (test=
+
+Compare->   (left=Name(id='a', ctx=Load()), ops=[Lt(),], comparators=[Name(id='b',ctx=Load()),])
+
+, body=
+
+
+body_str-> [Assign(targets=[Name(id='c', ctx=Store()),],value=BinOp(left=Name(id='d', ctx=Load()),op=Mult(), right=Num(n=2))),],
+ 
+
+
+        split trough orelse=
+
+
+
+ladder =	[If2
+
+	,
+      ])
+
+recursion on ladder
+
+(test=
+
+Compare-> (left=Name(id='a', ctx=Load()), ops=[
+            Lt(),
+          ], comparators=[
+            Name(id='c', ctx=Load()),
+          ]), 
+
+body->    [
+            If(test=Compare(left=Name(id='a', ctx=Load()), ops=[
+                Lt(),
+              ], comparators=[
+                BinOp(left=Name(id='e', ctx=Load()), op=Div(), right=Num(n=2)),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='c', ctx=Store()),
+                  ], value=BinOp(left=Name(id='d', ctx=Load()), op=Mult(), right=Num(n=2))),
+                Assign(targets=[
+                    Name(id='f', ctx=Store()),
+                  ], value=BinOp(left=Name(id='g', ctx=Load()), op=Mult(), right=Num(n=2))),
+              ], 
+	
+	orelse=
+
+	[]),
+            While(test=Compare(left=Name(id='e', ctx=Load()), ops=[
+                Lt(),
+              ], comparators=[
+                Name(id='f', ctx=Load()),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='e', ctx=Store()),
+                  ], value=Num(n=1)),
+                If(test=Compare(left=Name(id='d', ctx=Load()), ops=[
+                    Lt(),
+                  ], comparators=[
+                    Name(id='c', ctx=Load()),
+                  ]), body=[
+                    Assign(targets=[
+                        Name(id='f', ctx=Store()),
+                      ], value=Num(n=1)),
+                  ], orelse=[]),
+              ], orelse=[]),
+          ], orelse=[
+            If(test=Compare(left=Name(id='x', ctx=Load()), ops=[
+                Lt(),
+              ], comparators=[
+                Name(id='y', ctx=Load()),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='c', ctx=Store()),
+                  ], value=Name(id='a', ctx=Load())),
+              ], orelse=[]),
+            While(test=Compare(left=Name(id='f', ctx=Load()), ops=[
+                Eq(),
+              ], comparators=[
+                Name(id='e', ctx=Load()),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='d', ctx=Store()),
+                  ], value=Name(id='e', ctx=Load())),
+              ], orelse=[]),
+          ])

@@ -1,0 +1,19 @@
+a = b = c = d = e = f = g = 10
+e1 = e2 = e3 = e4 = True
+while w:
+    if e1 :
+            x = a
+            y = b
+    else:
+            z = c
+            q = d
+            if e2:
+                p = q
+                r = s
+            else:
+                u = v
+    i = e
+    j = f
+k = l
+m = n
+dora += mon

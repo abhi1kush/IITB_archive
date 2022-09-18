@@ -1,0 +1,28 @@
+# Procedure copy2
+z = 1
+y = -1
+while z == 1:
+	y = y + 1
+	if y == 0:
+		z = x
+	else:
+		z = 0
+
+####################################################
+Low <= z
+Low <= y
+### While Iteration: 1
+zLabel + yLabel <= y
+zLabel + xLabel + yLabel <= z
+zLabel + yLabel <= z
+-> PC: [['xLabel', 'yLabel', 'zLabel'], ['yLabel', 'zLabel'], ['zLabel']]
+### While Iteration: 2
+zLabel + xLabel + yLabel <= y
+zLabel + yLabel <= y
+zLabel + yLabel <= y
+zLabel + xLabel + yLabel <= z
+zLabel + xLabel + yLabel <= z
+zLabel + xLabel + yLabel <= z
+zLabel + yLabel <= z
+-> PC: [['xLabel', 'yLabel', 'zLabel'], ['yLabel', 'zLabel'], ['zLabel']]
+Saturation point of loop!

@@ -1,0 +1,99 @@
+Module(body=[
+    Import(names=[
+        alias(name='thread', asname=None),
+      ]),
+    Import(names=[
+        alias(name='time', asname=None),
+      ]),
+    Import(names=[
+        alias(name='threading', asname=None),
+      ]),
+    Assign(targets=[
+        Name(id='x', ctx=Store()),
+      ], value=Num(n=1)),
+    Assign(targets=[
+        Name(id='y', ctx=Store()),
+      ], value=Num(n=7)),
+    FunctionDef(name='thread1_copy5', args=arguments(args=[], vararg=None, kwarg=None, defaults=[]), body=[
+        Print(dest=None, values=[
+            Str(s='thr1'),
+          ], nl=True),
+        Global(names=[
+            'y',
+          ]),
+        Global(names=[
+            'x',
+          ]),
+        Assign(targets=[
+            Name(id='y', ctx=Store()),
+          ], value=Num(n=0)),
+        While(test=Compare(left=Name(id='x', ctx=Load()), ops=[
+            Eq(),
+          ], comparators=[
+            Num(n=0),
+          ]), body=[
+            Pass(),
+          ], orelse=[]),
+        Assign(targets=[
+            Name(id='y', ctx=Store()),
+          ], value=Num(n=1)),
+      ], decorator_list=[]),
+    FunctionDef(name='thread2_check_value_of_y', args=arguments(args=[], vararg=None, kwarg=None, defaults=[]), body=[
+        Print(dest=None, values=[
+            Str(s='thr2'),
+          ], nl=True),
+        Global(names=[
+            'y',
+          ]),
+        Assign(targets=[
+            Name(id='i', ctx=Store()),
+          ], value=Num(n=10000000)),
+        While(test=Compare(left=Name(id='i', ctx=Load()), ops=[
+            Gt(),
+          ], comparators=[
+            Num(n=0),
+          ]), body=[
+            Print(dest=None, values=[
+                Name(id='y', ctx=Load()),
+              ], nl=True),
+            Assign(targets=[
+                Name(id='i', ctx=Store()),
+              ], value=BinOp(left=Name(id='i', ctx=Load()), op=Sub(), right=Num(n=1))),
+            Expr(value=Call(func=Attribute(value=Name(id='time', ctx=Load()), attr='sleep', ctx=Load()), args=[
+                Num(n=1),
+              ], keywords=[], starargs=None, kwargs=None)),
+          ], orelse=[]),
+      ], decorator_list=[]),
+    TryExcept(body=[
+        Expr(value=Call(func=Attribute(value=Name(id='thread', ctx=Load()), attr='start_new_thread', ctx=Load()), args=[
+            Name(id='thread1_copy5', ctx=Load()),
+            Tuple(elts=[], ctx=Load()),
+          ], keywords=[], starargs=None, kwargs=None)),
+        Expr(value=Call(func=Attribute(value=Name(id='thread', ctx=Load()), attr='start_new_thread', ctx=Load()), args=[
+            Name(id='thread2_check_value_of_y', ctx=Load()),
+            Tuple(elts=[], ctx=Load()),
+          ], keywords=[], starargs=None, kwargs=None)),
+      ], handlers=[
+        ExceptHandler(type=None, name=None, body=[
+            Print(dest=None, values=[
+                Str(s='Error: unable to start thread'),
+              ], nl=True),
+          ]),
+      ], orelse=[]),
+    Assign(targets=[
+        Name(id='i', ctx=Store()),
+      ], value=Num(n=100000000)),
+    While(test=Compare(left=Name(id='i', ctx=Load()), ops=[
+        Gt(),
+      ], comparators=[
+        Num(n=0),
+      ]), body=[
+        Assign(targets=[
+            Name(id='i', ctx=Store()),
+          ], value=BinOp(left=Name(id='i', ctx=Load()), op=Sub(), right=Num(n=1))),
+      ], orelse=[]),
+    Print(dest=None, values=[
+        Str(s='y='),
+        Name(id='y', ctx=Load()),
+      ], nl=True),
+  ])

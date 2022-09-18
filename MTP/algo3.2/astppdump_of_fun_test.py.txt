@@ -1,0 +1,42 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='x', ctx=Store()),
+      ], value=Num(n=1)),
+    Assign(targets=[
+        Name(id='y', ctx=Store()),
+      ], value=Num(n=2)),
+    Assign(targets=[
+        Name(id='z', ctx=Store()),
+      ], value=Num(n=3)),
+    FunctionDef(name='f', args=arguments(args=[
+        Name(id='x', ctx=Param()),
+        Name(id='y', ctx=Param()),
+        Name(id='z', ctx=Param()),
+      ], vararg=None, kwarg=None, defaults=[]), body=[
+        If(test=Name(id='e1', ctx=Load()), body=[
+            Assign(targets=[
+                Name(id='z', ctx=Store()),
+              ], value=Name(id='a', ctx=Load())),
+            Return(value=Name(id='z', ctx=Load())),
+          ], orelse=[
+            Assign(targets=[
+                Name(id='y', ctx=Store()),
+              ], value=Name(id='a2', ctx=Load())),
+            Return(value=Name(id='y', ctx=Load())),
+          ]),
+        If(test=Name(id='e2', ctx=Load()), body=[
+            Assign(targets=[
+                Name(id='x', ctx=Store()),
+              ], value=Name(id='a3', ctx=Load())),
+            Return(value=Name(id='x', ctx=Load())),
+          ], orelse=[]),
+        Assign(targets=[
+            Name(id='x', ctx=Store()),
+          ], value=Name(id='r4', ctx=Load())),
+      ], decorator_list=[]),
+    Expr(value=Call(func=Name(id='f', ctx=Load()), args=[
+        Name(id='x', ctx=Load()),
+        Name(id='y', ctx=Load()),
+        Name(id='z', ctx=Load()),
+      ], keywords=[], starargs=None, kwargs=None)),
+  ])

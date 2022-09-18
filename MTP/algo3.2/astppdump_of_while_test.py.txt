@@ -1,0 +1,38 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='a', ctx=Store()),
+      ], value=Name(id='b', ctx=Load())),
+    Assign(targets=[
+        Name(id='x', ctx=Store()),
+      ], value=Name(id='y', ctx=Load())),
+    Assign(targets=[
+        Name(id='a', ctx=Store()),
+      ], value=Name(id='x', ctx=Load())),
+    Assign(targets=[
+        Name(id='s', ctx=Store()),
+      ], value=Num(n=1)),
+    Assign(targets=[
+        Name(id='c', ctx=Store()),
+      ], value=Name(id='s', ctx=Load())),
+    If(test=Name(id='e', ctx=Load()), body=[
+        Assign(targets=[
+            Name(id='i', ctx=Store()),
+          ], value=Name(id='a', ctx=Load())),
+        Assign(targets=[
+            Name(id='i', ctx=Store()),
+          ], value=Name(id='c', ctx=Load())),
+        Assign(targets=[
+            Name(id='b', ctx=Store()),
+          ], value=Name(id='i', ctx=Load())),
+      ], orelse=[]),
+    While(test=Name(id='w', ctx=Load()), body=[
+        Assign(targets=[
+            Name(id='a', ctx=Store()),
+          ], value=Name(id='q', ctx=Load())),
+        If(test=Name(id='e2', ctx=Load()), body=[
+            Assign(targets=[
+                Name(id='s', ctx=Store()),
+              ], value=Name(id='r', ctx=Load())),
+          ], orelse=[]),
+      ], orelse=[]),
+  ])

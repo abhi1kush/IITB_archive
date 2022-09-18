@@ -1,0 +1,91 @@
+Module(body=[
+    FunctionDef(name='copy1', args=arguments(args=[
+        Name(id='x', ctx=Param()),
+        Name(id='y', ctx=Param()),
+      ], vararg=None, kwarg=None, defaults=[]), body=[
+        Print(dest=None, values=[
+            Name(id='x', ctx=Load()),
+            Name(id='y', ctx=Load()),
+          ], nl=True),
+        Assign(targets=[
+            Name(id='a', ctx=Store()),
+            Name(id='b', ctx=Store()),
+            Name(id='c', ctx=Store()),
+            Name(id='d', ctx=Store()),
+            Name(id='e', ctx=Store()),
+            Name(id='f', ctx=Store()),
+            Name(id='g', ctx=Store()),
+            Name(id='h', ctx=Store()),
+            Name(id='i', ctx=Store()),
+          ], value=Num(n=9)),
+        Assign(targets=[
+            Name(id='ctest', ctx=Store()),
+          ], value=Num(n=2)),
+        Assign(targets=[
+            Name(id='ztest', ctx=Store()),
+          ], value=Num(n=0)),
+        Assign(targets=[
+            Name(id='ytest', ctx=Store()),
+          ], value=Name(id='ztest', ctx=Load())),
+        Assign(targets=[
+            Name(id='xtest', ctx=Store()),
+          ], value=UnaryOp(op=USub(), operand=Name(id='ytest', ctx=Load()))),
+        Assign(targets=[
+            Name(id='sep1', ctx=Store()),
+          ], value=Num(n=4)),
+        Assign(targets=[
+            Name(id='isolated', ctx=Store()),
+          ], value=Num(n=5)),
+        If(test=Compare(left=Name(id='xtest', ctx=Load()), ops=[
+            Eq(),
+          ], comparators=[
+            Name(id='ztest', ctx=Load()),
+          ]), body=[
+            Assign(targets=[
+                Name(id='a', ctx=Store()),
+              ], value=Name(id='b', ctx=Load())),
+          ], orelse=[
+            If(test=Compare(left=Name(id='ztest', ctx=Load()), ops=[
+                Lt(),
+              ], comparators=[
+                Name(id='ctest', ctx=Load()),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='c', ctx=Store()),
+                  ], value=Name(id='d', ctx=Load())),
+              ], orelse=[
+                If(test=Compare(left=Name(id='ctest', ctx=Load()), ops=[
+                    Eq(),
+                  ], comparators=[
+                    Name(id='ztest', ctx=Load()),
+                  ]), body=[
+                    Assign(targets=[
+                        Name(id='e', ctx=Store()),
+                      ], value=Name(id='f', ctx=Load())),
+                  ], orelse=[
+                    If(test=Compare(left=Num(n=3), ops=[
+                        Lt(),
+                      ], comparators=[
+                        Num(n=6),
+                      ]), body=[
+                        Assign(targets=[
+                            Name(id='xtest', ctx=Store()),
+                          ], value=Name(id='ctest', ctx=Load())),
+                      ], orelse=[]),
+                    Assign(targets=[
+                        Name(id='g', ctx=Store()),
+                      ], value=Num(n=0)),
+                  ]),
+              ]),
+          ]),
+        If(test=Compare(left=Name(id='isolated', ctx=Load()), ops=[
+            Lt(),
+          ], comparators=[
+            Name(id='sep1', ctx=Load()),
+          ]), body=[
+            Assign(targets=[
+                Name(id='h', ctx=Store()),
+              ], value=BinOp(left=Name(id='i', ctx=Load()), op=Add(), right=Name(id='j', ctx=Load()))),
+          ], orelse=[]),
+      ], decorator_list=[]),
+  ])

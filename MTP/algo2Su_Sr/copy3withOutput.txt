@@ -1,0 +1,56 @@
+#copy3 synchronization flow
+import thread
+import time
+import threading
+
+#x=7
+#y=6
+#def copy3(x,y):     # copy x to y
+s0 = threading.Event()
+s1 = threading.Event()
+
+def thread1():
+    global x
+    if x==0:
+        s0.set()
+    else:
+        s1.set()
+
+def thread2():
+    global y
+    s0.wait()
+    s0.clear()
+    y=1
+    s1.set()
+
+def thread3():
+    global y
+    s1.wait()
+    s1.clear()
+    y=0
+    s0.set()
+
+try:
+    thread.start_new_thread(thread1,())
+    thread.start_new_thread(thread2,())
+    thread.start_new_thread(thread3,())
+except:
+    print "Error: unable to start thread"
+
+verify set s0 <=  s0
+verify set s1 <=  s1
+Verify if: x <= s1 * s0
+verify clear s0 <=  s0
+Verify '=' : Low <= y
+verify set s1 <=  s1
+Verify seq 0 : s0 <= y * s1 * s0
+Verify seq 1 : s0 <= y * s1
+Verify seq 2 : Low <= s1
+Verify PC : Low <= y * s1 * s0
+verify clear s1 <=  s1
+Verify '=' : Low <= y
+verify set s0 <=  s0
+Verify seq 0 : s1 <= y * s1 * s0
+Verify seq 1 : s1 <= y * s0
+Verify seq 2 : Low <= s0
+Verify PC : Low <= y * s1 * s0

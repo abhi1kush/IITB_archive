@@ -1,0 +1,90 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='b', ctx=Store()),
+      ], value=Num(n=1)),
+    Assign(targets=[
+        Name(id='a', ctx=Store()),
+      ], value=Name(id='b', ctx=Load())),
+    Assign(targets=[
+        Name(id='c', ctx=Store()),
+        Name(id='d', ctx=Store()),
+        Name(id='e', ctx=Store()),
+        Name(id='f', ctx=Store()),
+        Name(id='g', ctx=Store()),
+        Name(id='h', ctx=Store()),
+        Name(id='i', ctx=Store()),
+        Name(id='j', ctx=Store()),
+        Name(id='k', ctx=Store()),
+        Name(id='l', ctx=Store()),
+      ], value=Num(n=9)),
+    Assign(targets=[
+        Name(id='x', ctx=Store()),
+        Name(id='y', ctx=Store()),
+      ], value=Num(n=10)),
+    AugAssign(target=Name(id='x', ctx=Store()), op=Add(), value=Name(id='b', ctx=Load())),
+    If(test=Compare(left=Name(id='a', ctx=Load()), ops=[
+        Lt(),
+      ], comparators=[
+        Name(id='b', ctx=Load()),
+      ]), body=[
+        Assign(targets=[
+            Name(id='c', ctx=Store()),
+          ], value=BinOp(left=Name(id='d', ctx=Load()), op=Mult(), right=Num(n=2))),
+      ], orelse=[
+        If(test=Compare(left=Name(id='c', ctx=Load()), ops=[
+            Lt(),
+          ], comparators=[
+            Name(id='d', ctx=Load()),
+          ]), body=[
+            If(test=Compare(left=Name(id='e', ctx=Load()), ops=[
+                Lt(),
+              ], comparators=[
+                BinOp(left=Name(id='f', ctx=Load()), op=Div(), right=Num(n=2)),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='c', ctx=Store()),
+                  ], value=BinOp(left=Name(id='d', ctx=Load()), op=Mult(), right=Num(n=2))),
+                Assign(targets=[
+                    Name(id='f', ctx=Store()),
+                  ], value=BinOp(left=Name(id='g', ctx=Load()), op=Mult(), right=Num(n=2))),
+                While(test=Compare(left=Name(id='g', ctx=Load()), ops=[
+                    Lt(),
+                  ], comparators=[
+                    Name(id='h', ctx=Load()),
+                  ]), body=[
+                    Assign(targets=[
+                        Name(id='e', ctx=Store()),
+                      ], value=Num(n=1)),
+                    If(test=Compare(left=Name(id='i', ctx=Load()), ops=[
+                        Lt(),
+                      ], comparators=[
+                        Name(id='j', ctx=Load()),
+                      ]), body=[
+                        Assign(targets=[
+                            Name(id='f', ctx=Store()),
+                          ], value=Num(n=1)),
+                      ], orelse=[]),
+                  ], orelse=[]),
+              ], orelse=[]),
+          ], orelse=[
+            If(test=Compare(left=Name(id='x', ctx=Load()), ops=[
+                Lt(),
+              ], comparators=[
+                Name(id='y', ctx=Load()),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='c', ctx=Store()),
+                  ], value=Name(id='a', ctx=Load())),
+              ], orelse=[]),
+            While(test=Compare(left=Name(id='k', ctx=Load()), ops=[
+                Eq(),
+              ], comparators=[
+                Name(id='l', ctx=Load()),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='d', ctx=Store()),
+                  ], value=Name(id='e', ctx=Load())),
+              ], orelse=[]),
+          ]),
+      ]),
+  ])

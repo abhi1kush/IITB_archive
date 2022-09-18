@@ -1,0 +1,15 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='y', ctx=Store()),
+      ], value=Num(n=0)),
+    While(test=Compare(left=Name(id='x', ctx=Load()), ops=[
+        Eq(),
+      ], comparators=[
+        Num(n=0),
+      ]), body=[
+        Pass(),
+      ], orelse=[]),
+    Assign(targets=[
+        Name(id='y', ctx=Store()),
+      ], value=Num(n=1)),
+  ])

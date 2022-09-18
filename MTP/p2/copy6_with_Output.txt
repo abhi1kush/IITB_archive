@@ -1,0 +1,14 @@
+z = 0
+sum = 0
+y = 0
+while z == 0 :
+	sum = sum + x       
+        y = y + 1
+
+####################################################
+Low <= z
+Low <= sum
+Low <= y
+x + sum + z <= sum
+y + x + sum + z <= y
+y + x + sum + z <= sum

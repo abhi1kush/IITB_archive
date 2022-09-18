@@ -1,0 +1,81 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='w0', ctx=Store()),
+        Name(id='w1', ctx=Store()),
+        Name(id='w2', ctx=Store()),
+        Name(id='e1', ctx=Store()),
+        Name(id='e0', ctx=Store()),
+        Name(id='e2', ctx=Store()),
+        Name(id='e3', ctx=Store()),
+      ], value=Num(n=1)),
+    Assign(targets=[
+        Name(id='l0', ctx=Store()),
+        Name(id='l1', ctx=Store()),
+        Name(id='l2', ctx=Store()),
+      ], value=Num(n=2)),
+    Assign(targets=[
+        Name(id='var', ctx=Store()),
+      ], value=Num(n=5)),
+    Assign(targets=[
+        Name(id='E1', ctx=Store()),
+        Name(id='E2', ctx=Store()),
+        Name(id='E3', ctx=Store()),
+        Name(id='E4', ctx=Store()),
+        Name(id='E11', ctx=Store()),
+        Name(id='E21', ctx=Store()),
+      ], value=BinOp(left=Name(id='w0', ctx=Load()), op=Mult(), right=Name(id='w1', ctx=Load()))),
+    While(test=Name(id='w0', ctx=Load()), body=[
+        Assign(targets=[
+            Name(id='l0', ctx=Store()),
+          ], value=Name(id='var', ctx=Load())),
+        While(test=Name(id='w1', ctx=Load()), body=[
+            Assign(targets=[
+                Name(id='l1', ctx=Store()),
+              ], value=Name(id='var', ctx=Load())),
+            If(test=Compare(left=Name(id='e1', ctx=Load()), ops=[
+                Lt(),
+              ], comparators=[
+                Name(id='e0', ctx=Load()),
+              ]), body=[
+                Assign(targets=[
+                    Name(id='E1', ctx=Store()),
+                  ], value=Name(id='var', ctx=Load())),
+                While(test=Name(id='w2', ctx=Load()), body=[
+                    Assign(targets=[
+                        Name(id='E11', ctx=Store()),
+                      ], value=Name(id='var', ctx=Load())),
+                  ], orelse=[]),
+              ], orelse=[
+                If(test=Name(id='e2', ctx=Load()), body=[
+                    While(test=Name(id='w3', ctx=Load()), body=[
+                        Assign(targets=[
+                            Name(id='E21', ctx=Store()),
+                          ], value=Name(id='var', ctx=Load())),
+                      ], orelse=[]),
+                    Assign(targets=[
+                        Name(id='E2', ctx=Store()),
+                      ], value=Name(id='var', ctx=Load())),
+                  ], orelse=[
+                    If(test=Name(id='e3', ctx=Load()), body=[
+                        Assign(targets=[
+                            Name(id='E3', ctx=Store()),
+                          ], value=Name(id='var', ctx=Load())),
+                      ], orelse=[
+                        Assign(targets=[
+                            Name(id='E4', ctx=Store()),
+                          ], value=Name(id='var', ctx=Load())),
+                      ]),
+                  ]),
+              ]),
+            Assign(targets=[
+                Name(id='lif', ctx=Store()),
+              ], value=Name(id='var', ctx=Load())),
+          ], orelse=[]),
+        Assign(targets=[
+            Name(id='ll1', ctx=Store()),
+          ], value=Name(id='var', ctx=Load())),
+      ], orelse=[]),
+    Assign(targets=[
+        Name(id='ll0', ctx=Store()),
+      ], value=Name(id='var', ctx=Load())),
+  ])

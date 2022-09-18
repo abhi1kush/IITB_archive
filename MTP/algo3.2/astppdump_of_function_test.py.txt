@@ -1,0 +1,56 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='a', ctx=Store()),
+      ], value=Name(id='b', ctx=Load())),
+    Assign(targets=[
+        Name(id='b', ctx=Store()),
+      ], value=BinOp(left=Name(id='z', ctx=Load()), op=Add(), right=Name(id='c', ctx=Load()))),
+    FunctionDef(name='fun1', args=arguments(args=[
+        Name(id='b', ctx=Param()),
+      ], vararg=None, kwarg=None, defaults=[]), body=[
+        Global(names=[
+            'b',
+          ]),
+        Global(names=[
+            'a',
+          ]),
+        Assign(targets=[
+            Name(id='i', ctx=Store()),
+          ], value=Name(id='b', ctx=Load())),
+        Assign(targets=[
+            Name(id='j', ctx=Store()),
+          ], value=Name(id='a', ctx=Load())),
+        Assign(targets=[
+            Name(id='a', ctx=Store()),
+          ], value=Name(id='k', ctx=Load())),
+        Return(value=Name(id='a', ctx=Load())),
+      ], decorator_list=[]),
+    FunctionDef(name='fun2', args=arguments(args=[
+        Name(id='b', ctx=Param()),
+      ], vararg=None, kwarg=None, defaults=[]), body=[
+        Global(names=[
+            'b',
+          ]),
+        Global(names=[
+            'a',
+          ]),
+        Assign(targets=[
+            Name(id='ii', ctx=Store()),
+          ], value=Name(id='b', ctx=Load())),
+        Assign(targets=[
+            Name(id='jj', ctx=Store()),
+          ], value=Name(id='a', ctx=Load())),
+        Assign(targets=[
+            Name(id='a', ctx=Store()),
+          ], value=Name(id='kk', ctx=Load())),
+        Expr(value=Call(func=Name(id='fun1', ctx=Load()), args=[
+            Name(id='jj', ctx=Load()),
+          ], keywords=[], starargs=None, kwargs=None)),
+      ], decorator_list=[]),
+    Expr(value=Call(func=Name(id='fun1', ctx=Load()), args=[
+        Name(id='a', ctx=Load()),
+      ], keywords=[], starargs=None, kwargs=None)),
+    Expr(value=Call(func=Name(id='fun2', ctx=Load()), args=[
+        Name(id='b', ctx=Load()),
+      ], keywords=[], starargs=None, kwargs=None)),
+  ])

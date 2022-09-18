@@ -1,0 +1,9 @@
+low <= x
+low <= z
+low <= sum
+low <= y
+low <= z
+low <= sum
+low <= y
+x + sum + z <= sum
+y + z <= y

@@ -1,0 +1,14 @@
+#copy5
+y = 0
+while x==0 :
+	pass
+y = 1
+
+####################################################
+Low <= y
+### While Iteration: 1
+-> PC: [['xLabel']]
+### While Iteration: 2
+-> PC: [['xLabel']]
+Saturation point of loop!
+xLabel <= y

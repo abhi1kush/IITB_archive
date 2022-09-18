@@ -1,0 +1,14 @@
+Module(body=[
+    If(test=Name(id='e', ctx=Load()), body=[
+        Assign(targets=[
+            Name(id='x', ctx=Store()),
+          ], value=Name(id='y', ctx=Load())),
+        Assign(targets=[
+            Name(id='z', ctx=Store()),
+          ], value=Name(id='u', ctx=Load())),
+      ], orelse=[
+        Assign(targets=[
+            Name(id='k', ctx=Store()),
+          ], value=Name(id='l', ctx=Load())),
+      ]),
+  ])

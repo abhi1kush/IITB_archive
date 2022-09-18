@@ -1,0 +1,7 @@
+6
+\dud{x} $\leqslant$ \dud{e0}
+\dud{x} $\leqslant$ \dud{e1}
+\dud{e0} $\leqslant$ \dud{y}
+\dud{e0} $\leqslant$ \dud{e1}
+\dud{e1} $\leqslant$ \dud{y}
+\dud{e1} $\leqslant$ \dud{e0}

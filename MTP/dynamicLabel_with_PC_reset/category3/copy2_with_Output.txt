@@ -1,0 +1,17 @@
+# Procedure copy2
+z = 1
+y = -1
+while z == 1:
+	y = y + 1
+	if y == 0:
+		z = x
+	else:
+		z = 0
+
+####################################################
+Low <= zLabel
+Low <= yLabel
+zLabel + yLabel <= yLabel
+zLabel + xLabel + yLabel <= zLabel
+zLabel + yLabel <= zLabel
+zLabel + xLabel + yLabel <= yLabel

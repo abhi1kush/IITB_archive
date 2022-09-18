@@ -1,0 +1,30 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='z', ctx=Store()),
+      ], value=Num(n=1)),
+    Assign(targets=[
+        Name(id='y', ctx=Store()),
+      ], value=Num(n=-1)),
+    While(test=Compare(left=Name(id='z', ctx=Load()), ops=[
+        Eq(),
+      ], comparators=[
+        Num(n=1),
+      ]), body=[
+        Assign(targets=[
+            Name(id='y', ctx=Store()),
+          ], value=BinOp(left=Name(id='y', ctx=Load()), op=Add(), right=Num(n=1))),
+        If(test=Compare(left=Name(id='y', ctx=Load()), ops=[
+            Eq(),
+          ], comparators=[
+            Num(n=0),
+          ]), body=[
+            Assign(targets=[
+                Name(id='z', ctx=Store()),
+              ], value=Name(id='x', ctx=Load())),
+          ], orelse=[
+            Assign(targets=[
+                Name(id='z', ctx=Store()),
+              ], value=Num(n=0)),
+          ]),
+      ], orelse=[]),
+  ])

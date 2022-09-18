@@ -1,0 +1,9 @@
+Module(body=[
+    Assign(targets=[
+        Name(id='x', ctx=Store()),
+      ], value=Name(id='y', ctx=Load())),
+    Assign(targets=[
+        Name(id='z', ctx=Store()),
+      ], value=Name(id='u', ctx=Load())),
+    AugAssign(target=Name(id='c', ctx=Store()), op=Add(), value=Name(id='s', ctx=Load())),
+  ])
