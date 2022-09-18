@@ -1,0 +1,277 @@
+\documentclass[a4paper,11pt,twocolumn,dvips]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[dvips]{graphicx}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{multicol}
+
+
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0in}
+\setlength{\textheight}{9.5in}
+\setlength{\headsep}{0in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\textwidth}{7.0in}
+
+
+%opening
+\title{{\bf A Sample Research Paper for Demo of Latex} }
+%\numberofauthors{2}
+\author{1.Abhishek Pratap singh
+abhi1kush@gmail.com}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\begin{abstract}
+{ \it WiFi mesh networks with outdoor links have become an at-
+tractive option to provide cost-effective broadband connec-
+tivity to rural areas, especially in developing regions. It is
+well understood that a TDMA-based approach is necessary
+to provide good performance over such networks. While pre-
+liminary prototypes of TDMA-based MAC protocols have
+been developed, there is no implementation-based valida-
+tion/evaluation in multi-hop settings. In this work, we de-
+scribe the elements of a multi-hop MAC implementation
+based on the open-source MADWIFI driver. We also present
+an evaluation, with a detailed accounting of the various over-
+heads, on a 4-hop (5-node) path. We show that our imple-
+mentation has no system overheads, achieves good through-
+put, and low delay/jitter. Although the significance of TDMA is recognized, its prac-
+ticality has always been in question, especially in multi-
+hop settings. Can effective time-synchronization really be
+achieved? What would be the overheads in practice, withelf WiFi hardware. We present some of these which
+have demonstrated TDMA implementations.
+SoftMAC  explores the use of the MADWIFI driver for
+Atheros-based WiFi radios to experiment with MAC proto-
+cols. 
+FreeMAC also implements channel switching in the TDMA
+system but does not implement multiple hops. FreeMAC
+uses the hardware beacon timer and indicates that the timer
+works well under both low load and heavy load conditions.}
+\end{abstract}
+
+\section{Introduction}
+\label{sec-intro}
+WiFi-based outdoor mesh networks have been demonstrated
+to be a viable option for providing cost-effective broadband
+connectivity to rural regions [1, 2, 3]. It is also well known
+that a TDMA-based MAC is necessary for good performance
+in such networks [1, 2, 4], with the default CSMA/CA oper-
+ation being inefficient.
+Although the significance of TDMA is recognized, its prac-
+\begin{multicols}{2}ticality has always been in question, especially in multi-
+hop settings. Can effective time-synchronization really be
+achieved? What would be the overheads in practice, with
+multiple hops? Can an implementation work using low-cost
+off-the-shelf hardware? Can system overheads be controlled
+so that the wireless capacity can be maximized? These are
+significant questions can only be answered through a pro-
+totype.
+\end{multicols}
+However, prototype-based evaluations of multi-hop
+wireless TDMA systems have been few and far between.
+According to \cite{sampe1}
+In this paper, we demonstrate a TDMA implementation
+that can be used over outdoor multi-hop networks using
+off the shelf inexpensive hardware. Our implementation
+is based on the open-source MADWIFI driver. It includes
+multi-hop synchronization, and schedule dissemination from
+
+\begin{table*}
+\label{tab-table}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+First & second & Third & Fourth& Fifth & Sixth & Seventh & Eighth&Nineth&Tenth\\
+\hline
+4 & 56 & 67 &89&4 & 56 & 67 &89&4 & 56 \\
+\hline
+4 & 56 & 67 &89&4 & 56 &345& 54& 556& 865\\
+\hline
+4 & 56 & 67 &89&4 & 56 &56& 34& 34&90\\
+\hline
+4 & 56 & 67 &89&4 & 56 &34& 788& 324&82\\
+\hline
+
+\end{tabular}
+\end{table*}
+
+There has been considerable effort in the area of driver-
+level radio configuration using open source drivers which fa-
+cilitates implementing various protocols over inexpensive off-
+the-shelf WiFi hardware. We present some of these which
+have demonstrated TDMA implementations.
+{\huge Refer}\ref{sec-intro}
+SoftMAC  explores the use of the MADWIFI driver for
+Atheros-based WiFi radios to experiment with MAC proto-
+cols. It disables RTS/CTS, MAC level ACKs, and facilitates\cite{article1}
+custom packet header formats by setting the card in moni-
+tor mode. To demonstrate the utility of the platform,  has
+implemented a TDMA system between two nodes. For our
+work, we borrow\cite{sample5} from SoftMAC, insights about disabling
+certain aspects of CSMA.
+\footnote{ For our
+work, we borrow from SoftMAC, insights about disabling
+certain aspects of CSMA}
+\section{Related Work}
+MadMAC  also implements an example TDMA sys-
+tem between two machines with slot sizes of 20ms-60ms and
+guard bands of 4ms-12ms. However, since we envision a mul-
+{\bf\it \large  Refer to Table }\ref{tab-table}tihop system, increased slot size has a detrimental effect on
+the delay/jitter. We have used slot sizes and guard bands
+much smaller than those in MadMAC.
+Building over SoftMAC, FreeMAC  exposes many more
+configurable parameters. It also demonstrates a TDMA sys-
+tem, but it uses out-of-band ethernet for synchronization.
+FreeMAC also implements channel switching in the TDMA
+system but does not implement multiple hops. FreeMAC
+uses the hardware beacon timer and indicates that the timer
+works well under both low load and heavy load conditions.\cite{google}
+However, we found that the hardware timer is very sloppy
+with an increased number of RX interrupts as described in
+\begin{equation}
+z=\left(\frac{d}{dx}\left(\frac{z^y}{\log y}\right),\int_{x=-\infty}^{y=\infty}\frac{\log \tan \theta}{\sqrt{\log \cos \theta}}\right)_{max}
+\end{equation}
+Sec. 4.5. FreeMAC’s insights into various aspects of Mad-
+Wifi, including the hardware timer, has served as a starting
+point for our work.
+Overlay MAC uses the Click router system and imple-
+ments a configurable module between the MAC layer and
+
+the network layer.
+
+ However, unlike our work it does not
+have precise control over packet transmission times. And
+it implements a distributed algorithm for allocating slots
+are loss-based, e.g. TCP-Reno. In this situation, the delay-based
+approaches may suffer from significant lower throughput than
+their fair share. The reason is that delay-based approaches re-
+duce their sending rate when bottleneck queue is built to avoid\cite{wiki}
+self-induced packet losses. However, this behavior will encour-
+age loss-based flows to increase their sending rate as they may
+observe less packet losses. As a consequence, the loss-based
+flows will obtain much more bandwidth than their share and
+delay-based flows may even be starved 
+In this paper, we propose a new congestion control protocol
+for high-speed and long delay environment that satisfies all
+aforementioned three requirements. Our new protocol is a syn-
+ergy of both delay-based and loss-based congestion avoidance
+approaches, which we call it Compound TCP (CTCP).
+
+\section{The key Features of TCP}
+\label{sec-section}
+
+idea of CTCP is to add a scalable delay-based component to
+standard TCP 1 .
+\begin{itemize}
+ \item {\bf List of network protocols}
+ \item Bluetooth protocols
+ \item Fibre Channels network protocols
+ \begin{itemize}
+ \item{\bf Network and Transport layer protocol}
+ \item Internet Protocol Suite or TCP/IP model 
+ \item OSI protocols
+ \item Routing protocols
+  \end{itemize}
+ \begin{enumerate}
+ \item {\bf Application layer Protocol}
+ \item SSH
+ \item FTP
+ \item SMTP
+ \item Telnet
+ \end{enumerate}
+ 
+ \end{itemize} This delay-based component has a scalable
+window increasing rule that not only can efficiently use the link
+capacity, but can also react early to congestion by sensing the
+changes in RTT. If a bottleneck queue is sensed, the delay-
+based component gracefully reduces the sending rate. This way,
+CTCP achieves good RTT fairness and TCP fairness.
+\subsection{Analysis and ex-
+perimental Results }
+We have
+developed analytical model of CTCP and performed compre-
+hensive performance studies on CTCP based on our implemen-
+tation on Microsoft Windows platform. Our analysis and ex-
+perimental results suggest that CTCP is a promising algorithm
+to achieve high link utilization and while maintaining
+Although\cite{sample6} the significance of TDMA is recognized, its prac-
+ticality has always been in question, especially in multi-
+hop settings. Can effective time-synchronization really be
+achieved? What would be the overheads in practice, with
+multiple hops? Can an implementation work using low-cost
+off-the-shelf hardware? Can system overheads be controlled
+so that the wireless capacity can be maximized? These are
+significant questions can only be answered through a pro-
+totype. However, prototype-based evaluations of multi-hop\cite{sample2}
+wireless TDMA systems have been few and far between.
+In this paper, we demonstrate a TDMA implementation
+that can be used over outdoor multi-hop networks using
+off the shelf inexpensive hardware. Our implementation
+is based on the open-source MADWIFI driver.
+\begin{figure*}
+\label{fig-circles}
+\centering
+\includegraphics[scale =0.3]{drawing.eps}
+\end{figure*}
+\input{latech}
+It includes
+multi-hop synchronization, and schedule dissemination from
+There has been considerable effort in the area of driver-
+level radio configuration using open source drivers which fa-
+
+cilitates implementing various protocols over inexpensive off-
+the-shelf WiFi hardware. We present some of these which
+have demonstrated TDMA implementations.
+SoftMAC  explores the use of the MADWIFI driver for
+Atheros-based WiFi radios to experiment with MAC proto-
+cols. It disables RTS/CTS, MAC level ACKs, and facilitates
+custom packet header formats by setting the card in moni-
+tor mode. To demonstrate the utility of the platform,  has\cite{sample3}
+implemented a TDMA system between two nodes. For our
+work, we borrow from SoftMAC, insights about disabling
+certain aspects of CSMA.
+\footnote{ For our
+work, we borrow from SoftMAC, insights about disabling
+certain aspects of CSMA}
+MadMAC  also implements an example TDMA sys-
+\begin{equation}
+\label{eq-equation1}
+\lim_{h \to +\infty} \frac{h\sin\theta}{\log \sec h\theta}
+\end{equation}
+tem between two machines with slot sizes of 20ms-60ms and
+
+{\bf\it Refer to section }\ref{sec-section}
+guard bands of 4ms-12ms. However, since we envision a mul-
+tihop system, increased slot size has a detrimental effect on
+the delay/jitter. We have used slot sizes and guard bands
+A graph of the highest TCP seqeunce number sent by node0 and the
+    highest ACK received by node0 as a function of time (time on x-axis)
+    . This is called the TCP time seqeunce graph. You will have one point
+    on the graph for every data packet sent/ack received.
+   {\bf\it Refer to figure }\ref{fig-circles} A graph of the average TCP throughput seen by node1 as a function of time. You must compute throughput over windows of 1 second. You will have one point on the graph for every second.
+    A graph of the evolution of cwnd at node0 as a function of time.
+    A graph of the queue occupancy (that is, the number of packets enqueued but not yet dequeued) at node 0 as a function of time.
+
+\begin{equation}
+ y= \int_{x=-\infty}^{y=\infty}\frac{\sin A}{\sqrt{\log \cos B}}
+\end{equation}    A graph of the queueing delays experienced by packets as a function of time. Every time a packet is dequeued at node0, compute the amount of time it spent in the queue, and plot a point on the graph for every such sample. 
+You should automate the entire process of generating graphs using a scripting language of your choice. You should have a top-level script called, say, "pa2-part1.sh" (it can be a bash/python/perl/any other script). This script should take as input a folder containing the output files from the simulation (pcaps, cwnd and ascii traces). {\bf\it Refer to equation }\ref{eq-equation}It should produce the above graphs (eps/png/jpg/pdf) into the same folder. For example, suppose we have run the simulation and moved all the pcap and trace output files into a folder called "/home/cs641/pa2-part1-analysis". Then, your script should be invoked as shown 
+much smaller than those in MadMAC.
+Building over SoftMAC, FreeMAC  exposes many moren nconfigurable parameters. It also demonstrates a TDMA sys-
+tem, but it uses out-of-band ethernet for synchronization.
+FreeMAC also implements channel switching in the TDMA
+system but does not implement multiple hops. FreeMAC\cite{sample4}
+uses the hardware beacon timer and indicates that the timer
+works well under both low load and heavy load conditions.
+However, we foun
+\footnote{This is footnote blah blah balah}
+$$x^7+x^2-7px+3q $$
+
+\input{latech3}
+\bibliographystyle{plain}
+\bibliography{reference}
+
+\end{document}
