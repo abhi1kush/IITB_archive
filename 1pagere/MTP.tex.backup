@@ -1,0 +1,27 @@
+\resheading{Major Projects and Seminar}
+\begin{itemize}
+\item \textbf{Power Management in Virtualized platform} \\
+      \emph{(M.Tech Project, under the guidance of Prof. Varsha Apte)} \hfill {\emph{[ May 2015 - Ongoing ]}} \\[-0.6cm]
+      \begin{itemize}
+  \item \textit{Objective:} Measurment and Analysis of power consumption of server in virtual platform, strategies to reduce power consumption.\\[-0.5cm]
+ 	  	  
+  \item \textit{Approach:} \\[-0.5cm]
+   \begin{itemize}
+ \item Development of tool to track and analyse power cosumption. \\[-0.5cm]
+ \item 
+\item comparision of power reductioon strategies on the basis of feasibility and on the basis how much they affects performance of the system.\\[-0.5cm]
+   \end{itemize}
+  \item \textit{Future work:} 
+  Devlopment of Power Management tool for Virtualized system to manage power efficiently\\[-0.5cm]
+  	        \end{itemize}
+\item \textbf{Virtualization and Power Management in Virtalized Platform} \\
+\emph{(M.Tech Seminar, under the guidance of Prof. Varsha Apte)} \hfill {\emph{[ Jan 2015 - April 2015 ]}} \\[-0.6cm]
+\begin{itemize}
+	\item Surveyed various virtualization technologiies and studied comparison among them. \\[-0.5cm]
+	\item Discussed the challenges presented in these Virtual platforms. \\[-0.5cm]
+	\item Surveyed Power Management techniques on virtualizzed platform. \\[-0.5cm]
+%	\item Virtual Network environment: Mininet \\[-0.5cm]
+\end{itemize}
+
+
+\end{itemize}

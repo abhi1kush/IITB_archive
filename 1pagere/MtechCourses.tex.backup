@@ -1,0 +1,28 @@
+\resheading{M.Tech. Courses} \hfill \\[-0.4cm]
+\hspace*{0.45cm} 
+ \hfill \\[-0.8cm]
+
+\begin{multicols}{3}
+\begin{itemize}
+\item Algorithms and Complexity  \\[-0.6cm]     
+\item Linear Optimization \\[-0.6cm]
+\item Mobile Computing \\[-0.6cm]
+\end{itemize}
+
+\columnbreak
+\begin{itemize}
+\item Computer Networks \\[-0.6cm]
+\item Development of Mathematics in India \\[-0.6cm] 
+\end{itemize}
+
+\columnbreak
+\begin{itemize}
+\item Advanced Compilers \\[-0.6cm]
+\item Performance Analysis of Computer Systems and Network \\[-0.6cm]
+
+\end{itemize}
+
+\end{multicols}
+
+
+

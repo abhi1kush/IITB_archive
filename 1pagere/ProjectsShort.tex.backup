@@ -1,0 +1,15 @@
+\resheading{Course Projects}
+\begin{itemize}
+\item \textbf{Simulation Analysis of Web Application } \emph{[ CS681 Performance Evaluation of Computer Systems and Networks]} 
+	\emph{(Guided by Prof. Varsha Apte, Spring 2014)} \hfill \\[-0.6cm]
+	
+	\item \textbf{Extract information of RSS and WSS of a Process in linux kernel by desgining a loadable kernel module} \hfill \emph{[ CS401 Kernel Programming ]} 
+	\emph{(Guided by Prof. Purushottam Kulkarni Spring 2015)}\\[-0.7cm]
+	
+	\item \textbf{Instrument the scheduler functions (with hooks) to generate scheduler-level and process-level statistics} \hfill \emph{[ CS401 Kernel Programming ]} 
+	\emph{(Guided by Prof. Purushottam Kulkarni 2015)} \\[-0.7cm]
+	
+	\item \textbf{Automation of ns3 simulation and graph genration}  \emph{[CS699]}
+	\emph{(Guided by Bhaskaran Raman Autumn 2014)}\hfill \\[-0.6cm]
+	
+\end{itemize}

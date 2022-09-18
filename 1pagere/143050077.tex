@@ -1,0 +1,73 @@
+\documentclass[a4paper,10pt]{article}
+%-----------------------------------------------------------
+\usepackage[top=0.75in, bottom=0.75in, left=0.55in, right=0.85in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+% \usepackage{comment}
+\usepackage{palatino}
+\fontfamily{SansSerif}
+\selectfont
+\usepackage[inline]{enumitem}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+\usepackage[none]{hyphenat}
+% \usepackage{helvetica}
+% \usepackage{array}
+\usepackage{color}
+\usepackage{newclude}
+\definecolor{mygrey}{gray}{0.75}
+\textheight=10in
+\raggedbottom
+% \raggedright
+\setlength{\tabcolsep}{0in}
+\newcommand{\isep}{-2 pt}
+\newcommand{\lsep}{-0.4cm}
+\newcommand{\psep}{-0.5cm}
+\renewcommand{\labelitemii}{$\circ$}
+% Adjust margins
+%\addtolength{\oddsidemargin}{-0.375in}
+%\addtolength{\evensidemargin}{-0.375in}
+%\addtolength{\textwidth}{1.75in}
+%\addtolength{\topmargin}{0.1375in}
+%\addtolength{\textheight}{1.75in}
+\pagestyle{empty}
+%-----------------------------------------------------------
+%Custom commands
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+\newcommand{\resheading}[1]{{\small \colorbox{mygrey}{\begin{minipage}{0.975\textwidth}{\textbf{ \vphantom{p\^{E}} \large #1}}\end{minipage}}}}
+\newcommand{\ressubheading}[3]{
+\begin{tabular*}{6.62in}{l @{\extracolsep{\fill}} r}
+	\textsc{{\textbf{#1}}} & \textsc{\textit{[#2]}} \\
+\end{tabular*}\vspace{-8pt}}
+% \textit{#3} &  \\
+%-----------------------------------------------------------
+
+\begin{document}
+\hspace{0.5cm}\\
+\hspace{0.5cm}\\
+\hspace{0.5cm}\\
+\hspace{0.5cm}\\
+\hspace{0.5cm}\\
+\hspace{0.5cm}\\
+\hspace{0.5cm}\\
+\hspace{0.5cm}\\
+\hspace{0.5cm}\\
+\vspace{0.15cm}
+\include*{MTP}
+\vspace{0.15cm}
+\include*{ProjectsShort}
+\vspace{0.15cm}
+%\include*{BEprojects}
+\vspace{0.15cm}
+\include*{MtechCourses}
+\vspace{0.15cm}
+\include*{TechnicalSkills}
+\vspace{0.15cm}
+%\include*{FieldInterest}
+\vspace{0.15cm}
+\include*{POR}
+\vspace{0.15cm}
+\include*{ExtraCurricular}
+
+\end{document}
