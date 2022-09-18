@@ -1,0 +1,184 @@
+%\documentclass[11pt,a4paper,openright]{report}
+\documentclass[project,twoside]{iitbreport}
+
+\usepackage[toc,page]{appendix}
+\usepackage{titlesec}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+%\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+%% Selectively comment out sections that you want to be left out but
+%% maintaining the page numbers and other \ref
+%\includeonly{%
+%  introduction,
+%  ref,
+%  conclusion
+%}
+
+%%% Some commonly used packages (make sure your LaTeX installation
+%%% contains these packages, if not ask your senior to help installing
+%%% the packages)
+%\usepackage{pdfpages}
+\usepackage{mathtools}
+\usepackage{program}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{booktabs}
+\usepackage{fixltx2e}
+\usepackage{url}
+\usepackage{pbox}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{enumitem}
+\usepackage{amsmath}
+%\usepackage{enumerate} %lower-case roman numerals in enumerate lists
+\usepackage{multirow} %for table
+\usepackage{hhline} %for table
+\usepackage{subcaption} %for subcaption in sub-figures
+\setlist{nosep}
+\graphicspath{{images/}}
+\newcommand{\dud}[1]{\underline{#1}}
+%python
+\usepackage{listings}
+\usepackage{color}
+
+\newcommand{\mle}{$ \le $}
+\newcommand{\marr}{$ \rightarrow $}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+%python2 
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+%\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+%\usepackage{listings}
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\ttm,
+		otherkeywords={self,if,while,log},             % Add keywords here
+		keywordstyle=\ttb\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\ttb\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=tb,                         % Any extra options here
+		showstringspaces=false            % 
+	}}
+%endpython
+%\renewcommand{\chaptername}{}
+\usepackage{titlesec}
+
+\begin{document}
+\title{Certification of Python Programs on the Basis of Static Information Flow Analysis}
+\author{{\href{http://www.cse.iitb.ac.in/~kush/}{Abhishek Pratap Singh}}\\
+	143050077\\
+	\vspace{0.5cm} 
+	\normalfont \textit{ \centerline{under the guidance of}}
+	\vspace{1.0cm} 
+	\newline
+	{\textbf{Prof. R K Shyamsundar}}}
+\degree{Master of Technology}
+\dept{\href{http://www.cse.iitb.ac.in/}{Department of Computer Science and Engineering}}
+\monthyear{July, 2016}
+
+%\makecoverpage
+\maketitle
+
+\begin{abstract}
+	In this thesis, we present our work on secure information flow analysis of python programs.
+	We have built a platform that takes source code and labels of all objects used in python program as input for static
+	analysis of information flow throughout the program. We started with Denning's lattice model [1]
+	for verification of secure information flow. In this model, every object is associated with its
+	security class. To prevent unauthorized leak of information, the flow of information should be
+	in one way -- from less secure to more secure class. A lattice represents such information
+	model very well, the upward direction in lattice represents secure information flow. Verification of
+	information flow only on the basis of security class is not sufficient to certify the security of system, there is a need to consider the process, user or subject that executes the code. Use of Reader Writer Flow model \cite{denning} with subjects makes it possible to do secure
+	information flow analysis. We have developed four type of constraint generators C1, C2, C3 and C4 each implementing different approach. Constraint generator C1 considers fixed label and PC reset(PC reset denotes PC is not retaining information out of scope), C2 considers fixed label and monotonic PC (monotonic PC never lose information), C3 considers dynamic label and PC reset and finally the constraint generator C4 considers dynamic label and monotonic PC. Constraint resolver takes these constraints and RWFM labels [2] for each
+	object defined by the user as input and provides answers to various queries related to information
+	flow security.The report describes, the approach, implementation and case study done so far.
+\end{abstract}
+
+\renewcommand{\abstractname}{\LARGE Acknowledgements}
+
+
+%\clearpage
+\pagenumbering{roman}
+\addtocontents{toc}{\vskip-40pt}
+\let\cleardoublepage\clearpage
+\tableofcontents
+\listoffigures
+%\listoftables
+\lstlistoflistings
+\newpage
+%\cleardoublepage
+%\clearpage
+\let\cleardoublepage\clearpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\include{introduction}
+\include{bg}
+\include{secureInf}
+\include{certifych4}
+\include{constgen}
+\include{caseStudy}
+\include{conclusion}
+\begin{appendices}
+	\chapter{Python Script category 1: Constraint Generator}
+	\label{ch:p1}
+	\lstinputlisting[language=Python]{p1.py}
+	\chapter{Python Script category 2: Constraint Generator}
+	\label{ch:p2}
+	\lstinputlisting[language=Python]{p2.py}
+	\chapter{Python Script category 3: Constraint Generator}
+	\label{ch:p3}
+	\lstinputlisting[language=Python]{p3.py}
+	\chapter{Python Script category 4: Constraint Generator}
+	\label{ch:p4}
+	\lstinputlisting[language=Python]{p4.py}
+	\chapter{Python Script 2: Constraint Checker}
+	\label{ch:script2}
+	\lstinputlisting[language=Python]{constraint_checker.py}
+	\chapter{Copy Programs}
+	\label{ch:programs}
+	\lstinputlisting[language=Python]{programs.py}
+	
+\end{appendices}
+
+
+%\addcontentsline{toc}{chapter}{References}
+\bibliography{mylit}
+%\bibliographystyle{unsrt}
+
+\end{document}

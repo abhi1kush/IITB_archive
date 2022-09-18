@@ -1,0 +1,28 @@
+\chapter{Category 2 constraints : PC monotonic and fixed labels.}
+This chapter describes working of category 2 constraint generator. This algorithm is a improved version of previous category 1 algorithm. This algorithm using monotonic PC label instead of PC reset. By using monotonic PC this algorithm is able to detect additional information flows in program.
+\section{Working}
+rules
+\section{Key Idea}
+This analysis extension of previous algorithm, non terminating loops
+create a control dependency between variables used in condition of loop and
+the rest of the code where control can go subsequently on termination of loop,
+because of this behavior of non terminating loop PC storing all the dependencies.
+
+\section{Limitations}  
+In static analysis if constraint resolver ignores the order of generated constraints then it may show some additional false information flow in program, this is responsible for overhead and imprecision in certification process. Use of dynamic label solves this problem easily on the cost of more complex analysis.
+\begin{lstlisting}[language=Python, caption=Python version of dynamic label example in \cite{denning}. goal: information flow from x to y, label={lst:p2dynamic} ]
+def fun(x, y, z):
+a = x
+y = a
+a = z
+fun(x, y, z)
+\end{lstlisting}
+constraints generated for listing \ref{lst:p2dynamic} are given below:
+\begin{itemize}
+	\item x <= a
+	\item a + x <= y
+    \item a + x + z <= a
+\end{itemize}
+these constraints shows that there is information flow z to y ( using a <= y and z <= a) but in program there is no such flow exist. Because of such information flow constraint resolver may certify a secure program as not secure and it also create extra overhead on resolver. This example shows flaw in approach of using fixed label everywhere. Next algorithm will try to remove this limitation.
+
+

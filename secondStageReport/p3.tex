@@ -1,0 +1,53 @@
+\chapter{Category 3 constraints : PC reset and dynamic labels.}
+\label{ch:c3}
+This chapter describes category 3 constraint generator. This algorithm introduces use of dynamic label. Global variable are using fixed label and all local variables are assigned dynamic label. Information can flow outside only because of modification of global variable, modification of local variable doe not cause information because information remains in program itself.   
+\section{Constraint Rules}
+\begin{itemize}
+	\item < x := e > generate constraint [$\lambda(e)\oplus\lambda(PC)\le\lambda(x)$] and update PC label\\ $\lambda(PC) = \lambda(e)\oplus\lambda(PC)$ 
+	\item < if e then c1 else c2> \begin{enumerate}
+		\item $\forall  x \in ( modified\_global(\hspace{0.2cm} c1 \hspace{0.2cm}and \hspace{0.2cm} c2) \cup \{PC\} )$ generate constraints [$\lambda(e)\oplus\lambda(PC)\le\lambda(x)$] and update PC label $\lambda(PC) = \lambda(e)\oplus\lambda(PC)$
+		\item $\forall x \in ( modified\_local(\hspace{0.2cm} c1 \hspace{0.2cm}and \hspace{0.2cm} c2) \cup \{PC\} )$ update PC label $\lambda(PC) = \lambda(e)\oplus\lambda(PC)$
+	\end{enumerate}
+	\item < while e do c > \begin{enumerate}
+		\item $\forall  x \in ( modified\_global(c) \cup \{PC\} )$ generate constraints [$\lambda(e)\oplus\lambda(PC)\le\lambda(x)$] and update PC label $\lambda(PC) = \lambda(e)\oplus\lambda(PC)$
+		\item $\forall x \in ( modified\_local(c) \cup \{PC\} )$ update PC label $\lambda(PC) = \lambda(e)\oplus\lambda(PC)$
+	\end{enumerate}
+\end{itemize} 
+In static analysis if constraint resolver ignores the order of generated constraints then it may show some additional false information flow in program, this is responsible for overhead and imprecision in certification process.
+Use of dynamic label solves this problem easily on the cost of more complex analysis.\\~\\
+'a' is a local variable in function defined below.\\
+def function(x,y,z):\\
+\hspace*{1cm}a = x\\
+\hspace*{1cm}y = a\\
+\hspace*{1cm}a = z\\~\\
+static analysis will generate constraints 1. x$\le$a, 2. a$\le$y, 3. z$\le$a.\\
+Last two constraints shows false information flow from z to y (z\marr y).\\~\\
+Dynamic label analysis\\
+1. $\lambda(a)$ := x\\
+2. $y\le \lambda(a) \{x\}$\\
+3. $\lambda(a) := z $\\~\\
+This analysis treats global and local variable differently so it avoids false constraints successfully without tracking order of constraints explicitly.\\~\\
+a = x\\
+while 1:\\
+\hspace*{1cm} y = a\\
+\hspace*{1cm} a = z\\~\\
+Dynamic label Analysis:\\
+First iteration of while:\\
+1. $\lambda(a)$ := x\\
+2. $y\le \lambda(a) \{x\}$\\
+3. $\lambda(a) := z $\\~\\
+Second Iteration:\\
+2. $y\le \lambda(a) \{z\}$\\
+3. $\lambda(a) := z $\\~\\
+Dynamic label analysis generating different constraints for first iteration and second iteration but static analysis is not able to distinguish between information flow in first iteration and second iteration of while loop.
+\section{Key Idea}
+Definition of information flow among objects : If any data can be
+guessed by using given objects which was unknown previously, by using this
+idea information can flow outside only because of modification of global objects,
+so any information flow from local objects to global objects must be
+checked for security breach. Local variable plays a role of temporary in flow
+of information from one global to another, so local variable must keep track
+of information they hold, dynamic label is a good technique to keep track of
+history of information stored in a local variable.
+\section{Limitations}
+This constraint generator again using PC reset label scheme. We created this category for thorough analysis and comparison among all categories. So it shares the first limitation of category 1. It fails to capture global information flows created by non terminating loops.   

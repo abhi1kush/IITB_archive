@@ -1,0 +1,90 @@
+%\documentclass[11pt,a4paper,openright]{report}
+\documentclass[project,twoside]{iitbreport}
+
+
+%% Selectively comment out sections that you want to be left out but
+%% maintaining the page numbers and other \ref
+%\includeonly{%
+%  introduction,
+%  ref,
+%  conclusion
+%}
+
+
+%%% Some commonly used packages (make sure your LaTeX installation
+%%% contains these packages, if not ask your senior to help installing
+%%% the packages)
+\usepackage{booktabs}
+\usepackage{fixltx2e}
+\usepackage{url}
+\usepackage{pbox}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{enumitem}
+%\usepackage{enumerate} %lower-case roman numerals in enumerate lists
+\usepackage{multirow} %for table
+\usepackage{hhline} %for table
+\usepackage{subcaption} %for subcaption in sub-figures
+\setlist{nosep}
+\graphicspath{{images/}}
+%\renewcommand{\chaptername}{}
+\usepackage{titlesec}
+\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge\textbf}
+
+
+\begin{document}
+\title{Certification of Python Program On the Basis of Information Flow}
+\author{{\href{http://www.cse.iitb.ac.in/~kush/}{Abhishek Pratap Singh}}\\
+	143050077\\
+	\vspace{0.5cm} 
+	\normalfont \textit{ \centerline{under the guidance of}}
+	\vspace{1.0cm} 
+	\newline
+	{\textbf{Prof. R K Shyamsundar}}}
+\degree{Master of Technology}
+\dept{\href{http://www.cse.iitb.ac.in/}{Department of Computer Science and Engineering}}
+\monthyear{July, 2016}
+
+%\makecoverpage
+\maketitle
+
+\begin{abstract}
+	\par With the increasing number of users and gadgets, the mobile network operators are facing difficulties in scaling their radio and core network appliances. This has made them to think of re-designing the existing mobile network architecture, especially the LTE core network or the EPC (Evolved Packet Core). Various ideas have been proposed by researchers across the globe to transform the EPC in order to overcome the issues being faced by the mobile operators. Software Defined Networking (SDN) is one such trend that aims to enhance service flexibility and scalability, while lowering the total cost. The SDN-based approach separates out the control and data planes from the EPC components. The control functions run as applications on top of a controller whereas the data plane is comprised of general purpose OpenFlow switches. Thus, we have a low-cost packet gateways in the data plane, whereas flexible network functions in the control plane. Although there have been several proposals to re-design the EPC, but there does not exist any open-source framework to compare and analyse different design choices on the basis of performance metrics.
+	\par In this thesis, we present the design and implementation of an open-source LTE EPC based on the paradigms of SDN. We have evaluated the SDN-based EPC for various LTE procedures and provided a benchmarking on essential network performance parameters. Our framework can be used for research and experimentation, and to perform a comparative study of EPC re-design aspects such as Network Functions Virtualization (NFV). Besides, it can be used to develop new functionalities based on future LTE standards.
+\end{abstract}
+
+\renewcommand{\abstractname}{\LARGE Acknowledgements}
+\begin{abstract}
+	\par I would like to thank my advisor, Prof. Mythili Vutukuru for her constant guidance and supervision throughout the duration of the project. I feel privileged for the learning and enriching experience that she provided.
+	\par I would like to thank Aman Jain for collaborating with me for the work in this thesis. I am grateful for the encouraging and harmonious attitude shown by him. I thank Priyanka Naik, Sadagopan N S, Chinmay Mhatre and Chandra Prakash for their valuable inputs to the project. I also thank my batchmates in the lab for cooperating with us during the experiments.
+	\newline \newline \newline
+	\hspace*{4.7in}\textbf{Sunny Kumar Lohani}
+\end{abstract}
+
+%\clearpage
+\pagenumbering{roman}
+\addtocontents{toc}{\vskip-40pt}
+\let\cleardoublepage\clearpage
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+%\cleardoublepage
+%\clearpage
+\let\cleardoublepage\clearpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\include{introduction}
+\include{related}
+\include{lte_architecture}
+\include{sdn_architecture}
+\include{exp_setup}
+\include{benchmark}
+\include{conclusion}
+
+%\addcontentsline{toc}{chapter}{References}
+\bibliography{mylit}
+%\bibliographystyle{unsrt}
+
+\end{document}

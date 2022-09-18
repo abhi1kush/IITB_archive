@@ -1,0 +1,11 @@
+\chapter{Background}
+\label{ch:bg}
+There have been many studies on information flow control and all of them share some basic properties like information flow should be from less secure entity to more secure entity. Denning's book \cite{denning} has a chapter on information flow control, this chapter describes lattice model for information flow \cite{lattice}, this makes it easy to track information flow in a program using transitivity property. Analysis has been done on basic operations which involve information flow like assignment operation (explicit flow) based on data flow, conditional operations like if else, while etc. (implicit flows) based on control flow, information flow through covert channel based on traps and exception in programs. Here are some basic rules given in \cite{denning}, (arrow $\rightarrow$ denotes information flow).  
+\begin{itemize}
+	\item x = y : y $\rightarrow$ x
+	\item if e then x = y : e $\rightarrow$ x
+	\item while w {if e then{ x = y} w =false } : w $\oplus$ e $\rightarrow$ x
+	\item infinite loop: while w {}; x = y :- w $\rightarrow$ x etc.   
+\end{itemize}
+Chen et al. \cite{hybrid}(published in 2014) presented work on python byte-code and claimed that there was no work related to python at that time. They implemented information flow checker for python byte-code using static and dynamic analysis but their main focus is on information flow policies related to objects. Kumar et al. \cite{rwfm} introduce a new model to work with subjects and my work will be focused on this. Conti et al. \cite{taint} provide library support in python for information flow analysis in explicit flows only.       
+  

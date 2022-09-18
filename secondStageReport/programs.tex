@@ -1,0 +1,228 @@
+\documentclass[]{article}
+\usepackage[toc,page]{appendix}
+\usepackage{titlesec}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+%\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+%% Selectively comment out sections that you want to be left out but
+%% maintaining the page numbers and other \ref
+%\includeonly{%
+%  introduction,
+%  ref,
+%  conclusion
+%}
+
+%%% Some commonly used packages (make sure your LaTeX installation
+%%% contains these packages, if not ask your senior to help installing
+%%% the packages)
+%\usepackage{pdfpages}
+\usepackage{mathtools}
+\usepackage{program}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{booktabs}
+\usepackage{fixltx2e}
+\usepackage{url}
+\usepackage{pbox}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{enumitem}
+\usepackage{amsmath}
+%\usepackage{enumerate} %lower-case roman numerals in enumerate lists
+\usepackage{multirow} %for table
+\usepackage{hhline} %for table
+\usepackage{subcaption} %for subcaption in sub-figures
+\setlist{nosep}
+\graphicspath{{images/}}
+\newcommand{\dud}[1]{\underline{#1}}
+%python
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+%python2 
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+%\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+%\usepackage{listings}
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\ttm,
+		otherkeywords={self,if,while,log},             % Add keywords here
+		keywordstyle=\ttb\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\ttb\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=tb,                         % Any extra options here
+		showstringspaces=false            % 
+	}}
+	%endpython
+	%\renewcommand{\chaptername}{}
+	\usepackage{titlesec}
+
+
+%opening
+
+\begin{document}
+\begin{lstlisting}[language=Python, caption=Python version of copy1 example in \cite{denning}. goal: information flow from x to y, label={lst:copy1} ]
+#Procedure copy1
+x = 0
+z = 0
+y = 0
+if x == 0:
+z=1
+if z == 0:
+y=1
+\end{lstlisting}
+\begin{lstlisting}[language=Python, caption=Python version of copy2 example in \cite{denning}. goal: information flow from x to y, label={lst:copy2} ]
+# Procedure copy2
+x = 0
+z = 1
+y = -1
+while z == 1:
+y = y + 1
+if y == 0:
+z = x
+else:
+z = 0
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=Python, caption=Python version of copy3 example in \cite{denning}. goal: information flow from x to y, label={lst:copy3} ]
+#copy3 synchronization flow
+import thread
+import time
+import threading
+
+#x=7
+#y=6
+#def copy3(x,y):     # copy x to y
+s0 = threading.Event()
+s1 = threading.Event()
+
+def thread1():
+global x
+if x==0:
+s0.set()
+else:
+s1.set()
+
+def thread2():
+global y
+s0.wait()
+s0.clear()
+y=1
+s1.set()
+
+def thread3():
+global y
+s1.wait()
+s1.clear()
+y=0
+s0.set()
+
+try:
+thread.start_new_thread(thread1,())
+thread.start_new_thread(thread2,())
+thread.start_new_thread(thread3,())
+except:
+print "Error: unable to start thread"
+
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=Python, caption=Python version of copy4 example in \cite{denning}. goal: information flow from x to y, label={lst:copy4} ]
+#Procedure copy4
+import thread
+import time
+import threading
+
+def thread1():
+global x
+global e0
+global e1
+if x==0:
+e0 = False
+else:
+e1 = False
+
+def thread2(): 
+global e0
+global e1
+global y
+while e0
+pass
+y = 1
+e1 = False
+
+def thread3():
+global e1
+global e0
+global y
+while e1:
+pass
+y = 0
+e0 = False
+
+thread.start_new_thread(thread1,())
+thread.start_new_thread(thread2,())
+thread.start_new_thread(thread3,())\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption=Python version of copy5 example in \cite{denning}. goal: information flow from x to y, label={lst:copy5} ]
+#Procedure copy5
+y = 0
+while x==0 :
+pass
+y = 1
+\end{lstlisting}
+\begin{lstlisting}[language=Python, caption=Python version of copy6 example in \cite{denning}. goal: information flow from x to y, label={lst:copy6} ]
+#copy6
+z = 0
+ssum = 0
+y = 0
+while z == 0 :
+	ssum = ssum + x       
+	y = y + 1
+\end{lstlisting}
+\begin{lstlisting}[language=Python, caption=Python version of dynamic label example in \cite{denning}. goal: information flow from x to y, label={lst:dynamic} ]
+def fun(x, y, z):
+	a = x
+	y = a
+	a = z
+fun(x, y, z)
+\end{lstlisting}
+\end{document}

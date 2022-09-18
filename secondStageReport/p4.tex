@@ -1,0 +1,21 @@
+\chapter{Category 4 constraints: PC monotonic and dynamic label.}
+\label{ch:c4}
+This algorithm is best among all four algorithm in terms information security. Dynamic label processing increases time complexity of this algorithm but we used a property of PC label to make optimization.
+Constraint generation rules are same as category 3.
+\section{Key Idea} In this analysis PC never gets reset because we want to track all possible information flows including information flows from a nonterminating loop to rest of code.\\ 
+'a' is a local var\\
+a = x\\
+while w:\\
+\hspace*{1cm} y = a\\
+\hspace*{1cm} a = z\\
+z = y\\~\\
+Dynamic label Analysis:\\
+1. $\lambda(a) = x$\\
+2.PC\{w\}\\
+3.PC\{w, $\lambda$(a)\{x\}\} \hspace{1cm} $w\oplus x \le y$\\
+4.$\lambda(a) = z$\\
+5.PC\{w, x, y\} \hspace{1cm} $w\oplus x\oplus y \le z$\\
+
+So this algorithm is capable to track information flow w\marr z in last statement z = y by using monotonic PC without generating additional false constraints. 
+\section{Limitations}
+Use of dynamic label with monotonic creates challenge for processing of large number of labels.  

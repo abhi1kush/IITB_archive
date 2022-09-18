@@ -1,0 +1,46 @@
+\chapter{Python Syntax}
+\label{ch:thread}
+\begin{enumerate}
+\item if e == 1 then x = y else x = z : \\
+\begin{lstlisting}[ numbers=left, mathescape,%
+caption={if else, indentation is must}]
+if e == 1:
+	x = y
+else:
+	x = z 
+\end{lstlisting} 
+
+\item while( x < y ) \{ x = y; z += 1 \} 
+\begin{lstlisting}[ mathescape,%
+caption={while loop}]
+while x < y:
+	x = y
+	z += 1
+\end{lstlisting}
+\item \textbf{function}: (x is a global variable) foo(int z, int y) { x+=1;int y; y=1; return y; }
+\begin{lstlisting}[language=Python, caption=threads]
+def foo(z , y):
+	global x
+	x +=1
+	y = 1
+	return y
+\end{lstlisting}
+
+\item threads
+\begin{lstlisting}[language=Python, caption=threads]
+import thread
+import time
+import threading
+
+s0 = threading.Event()
+
+def thread1():
+	global x
+	s0.set()
+	s0.clear()
+	s0.wait()
+
+thread.start_new_thread(thread1,())
+\end{lstlisting}
+
+\end{enumerate}

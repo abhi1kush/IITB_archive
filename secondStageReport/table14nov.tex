@@ -1,0 +1,190 @@
+\documentclass{article}
+\usepackage{listings}
+
+\lstset{
+	language=Python,
+	basicstyle=\small,
+	breaklines=true
+}
+
+\begin{document}
+\hspace{-3cm}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Programs  &  P1 & P2 & P3 & P4 \\
+\hline
+Copy1&
+\begin{lstlisting}
+x <= z
+z <= y
+\end{lstlisting}&
+\begin{lstlisting}
+x <= z
+x + z <= y
+\end{lstlisting}&
+\begin{lstlisting}
+x <= y
+\end{lstlisting}&
+\begin{lstlisting}
+x <= y
+\end{lstlisting}\\
+\hline
+Copy2&
+\begin{lstlisting}
+Low <= z
+Low <= y
+y + z <= y
+y + x + z <= z
+y + z <= z
+\end{lstlisting}&
+ \begin{lstlisting}
+Low <= z
+Low <= y
+y + z <= y
+y + x + z <= z
+y + z <= z
+y + x + z <= y
+\end{lstlisting}&
+ \begin{lstlisting}
+Low <= y
+y <= y
+y + x <= y
+\end{lstlisting}&
+ \begin{lstlisting}
+Low <= y
+y <= y
+y + x <= y
+ \end{lstlisting}
+\\
+\hline
+Copy3&
+\begin{lstlisting}
+x + s0 <= s0
+x + s1 <= s1
+s0 <= s0
+Low <= y
+s1 <= s1
+\end{lstlisting}&
+\begin{lstlisting}
+x + s0 <= s0
+x + s1 <= s1
+s0 <= s0
+s0 <= y
+s1 + s0 <= s1
+s1 <= s1
+s1 <= y
+s1 + s0 <= s0
+\end{lstlisting}&
+\begin{lstlisting}
+x + s0 <= s0
+x + s1 <= s1
+s0 <= s0
+Low <= y
+s1 <= s1
+\end{lstlisting}&
+\begin{lstlisting}
+x + s0 <= s0
+x + s1 <= s1
+s0 <= s0
+s0 <= y
+s1 + s0 <= s1
+s1 <= s1
+s1 <= y
+s1 + s0 <= s0
+\end{lstlisting}
+\\
+\hline
+Copy4&
+\begin{lstlisting}
+x <= e0
+x <= e1
+Low <= y
+Low <= e1
+Low <= e0
+\end{lstlisting}&
+\begin{lstlisting}
+x <= e0
+x <= e1
+e0 <= y
+e0 <= e1
+e1 <= y
+e1 <= e0
+\end{lstlisting}&
+\begin{lstlisting}
+x <= e0
+x <= e1
+Low <= y
+Low <= e1
+Low <= e0
+\end{lstlisting}&
+\begin{lstlisting}
+x <= e0
+x <= e1
+e0 <= y
+e0 <= e1
+e1 <= y
+e1 <= e0
+\end{lstlisting}
+\\
+\hline
+Copy5&
+\begin{lstlisting}
+Low <= y
+\end{lstlisting} &
+\begin{lstlisting}
+Low <= y
+x <= y
+\end{lstlisting}&
+\begin{lstlisting}
+Low <= y 
+\end{lstlisting}&
+\begin{lstlisting}
+Low <= y
+x <= y
+\end{lstlisting}\\
+\hline
+Copy6&
+\begin{lstlisting}
+Low <= z
+Low <= sum
+Low <= y
+x + sum + z <= sum
+y + z <= y
+\end{lstlisting}&
+\begin{lstlisting}
+Low <= z
+Low <= sum
+Low <= y
+x + sum + z <= sum
+y + x + sum + z <= y
+y + x + sum + z <= sum
+\end{lstlisting} &
+\begin{lstlisting}
+Low <= y
+y <= y  
+\end{lstlisting}&
+\begin{lstlisting}
+Low <= y
+y + x <= y
+\end{lstlisting}\\
+\hline
+Dynamic label&
+\begin{lstlisting}
+x <= a
+a <= y
+z <= a
+\end{lstlisting}&
+\begin{lstlisting}
+x <= a
+a + x <= y
+a + x + z <= a
+\end{lstlisting} &
+\begin{lstlisting}
+x <= y
+\end{lstlisting}&
+\begin{lstlisting}
+x <= y
+\end{lstlisting}\\
+\hline
+\end{tabular}
+\end{document}

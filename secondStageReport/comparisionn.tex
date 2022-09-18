@@ -1,0 +1,6 @@
+\chapter{Comparision among all categories of constraints.}
+Last example given in Variable label with monotonic PC is suitable to differentiate between all category.
+First analysis will fail to track information flow w\marr z in last statement z = y.\\~\\
+Second analysis will be able to track information flow w\marr z in last statement z = y but it will show additional false information flow z \marr y too.\\~\\ 
+Third analysis avoids tracking of additional false information flow z \marr y but it fails to show information flow w \marr z because of PC reset.\\~\\
+Fourth analysis avoids tracking of false information flow as well as tracks information flow caused by nonterminating loop( w \marr z).

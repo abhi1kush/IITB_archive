@@ -1,0 +1,116 @@
+%\documentclass[11pt,a4paper,openright]{report}
+\documentclass[project,twoside]{iitbreport}
+
+\usepackage[toc,page]{appendix}
+\usepackage{titlesec}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+%\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+%% Selectively comment out sections that you want to be left out but
+%% maintaining the page numbers and other \ref
+%\includeonly{%
+%  introduction,
+%  ref,
+%  conclusion
+%}
+
+%%% Some commonly used packages (make sure your LaTeX installation
+%%% contains these packages, if not ask your senior to help installing
+%%% the packages)
+%\usepackage{pdfpages}
+\usepackage{mathtools}
+\usepackage{program}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{booktabs}
+\usepackage{fixltx2e}
+\usepackage{url}
+\usepackage{pbox}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{enumitem}
+\usepackage{amsmath}
+%\usepackage{enumerate} %lower-case roman numerals in enumerate lists
+\usepackage{multirow} %for table
+\usepackage{hhline} %for table
+\usepackage{subcaption} %for subcaption in sub-figures
+\setlist{nosep}
+\graphicspath{{images/}}
+\newcommand{\dud}[1]{\underline{#1}}
+%python
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+%python2 
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+%\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+%\usepackage{listings}
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\ttm,
+		otherkeywords={self,if,while,log},             % Add keywords here
+		keywordstyle=\ttb\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\ttb\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=tb,                         % Any extra options here
+		showstringspaces=false            % 
+	}}
+%endpython
+%\renewcommand{\chaptername}{}
+\usepackage{titlesec}
+
+\begin{document}
+%\title{Certification of Python Programs on the Basis of Static Information Flow Analysis}
+%\author{{\href{http://www.cse.iitb.ac.in/~kush/}{Abhishek Pratap Singh}}\\
+	%143050077\\
+	%\vspace{0.5cm} 
+	%\normalfont \textit{ \centerline{under the guidance of}}
+	%\vspace{1.0cm} 
+	%\newline
+	%{\textbf{Prof. R K Shyamsundar}}}
+%\degree{Master of Technology}
+%\dept{\href{http://www.cse.iitb.ac.in/}{Department of Computer Science and Engineering}}
+%\monthyear{July, 2016}
+
+%\makecoverpage
+%\maketitle
+\include{syntax}
+
+\end{document}
